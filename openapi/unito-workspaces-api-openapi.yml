@@ -1,0 +1,237 @@
+openapi: 3.0.3
+info:
+  title: Unito Embed Reports Workspaces API
+  version: 0.1.4
+  description: '<h2>Welcome to Unito Embed API documentation</h2> <p>In order to be able to use that api, Unito must first create an embed entity for you and give you its api key. <br>Once you have access to an embed, there are 2 main resources for  you to interact with </p> <p> <b>Workspaces - </b> Allow you to give us information about the entity (workspaces, organization, group, ... ) that the user accessing the embed belongs to. <br> Its unique identifier <i>externalWorkspaceId</i> is the value that you pass in the iframe URL. <br> The information provided regarding the status of that entity will allow us to keep up to date the status of the Unito''s workspace subscription. </p>
+
+    <p> <b>Reports - </b> You can select froma list of pre-made reports that our data team has been building in order to help you better understand how your users benefit from Unito, how many flows did they create, with which other tools did they connect and how big is their usage (changes synced, items in sync, ... ) </p>'
+servers:
+- url: http://localhost:9080
+  description: local
+- url: https://staging-api.unito.io
+  description: staging
+- url: https://api.unito.io
+  description: production
+  variables:
+    embedId:
+      default: wrike
+security:
+- ApiKeyAuth: []
+tags:
+- name: Workspaces
+paths:
+  /embeds/{embedId}/workspaces:
+    get:
+      summary: List all workspaces
+      x-eov-operation-id: index
+      x-eov-operation-handler: externalWorkspaces
+      description: TBD
+      tags:
+      - Workspaces
+      parameters:
+      - $ref: '#/components/parameters/EmbedIdParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/AllWorkspaces'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          $ref: '#/components/responses/404'
+        '422':
+          $ref: '#/components/responses/422'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+  /embeds/{embedId}/workspaces/{externalWorkspaceId}:
+    get:
+      summary: Get a workspace
+      x-eov-operation-id: show
+      x-eov-operation-handler: externalWorkspaces
+      description: TBD
+      tags:
+      - Workspaces
+      parameters:
+      - $ref: '#/components/parameters/EmbedIdParam'
+      - $ref: '#/components/parameters/ExternalWorkspaceIdParam'
+      responses:
+        '200':
+          $ref: '#/components/responses/Workspace'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          $ref: '#/components/responses/404'
+        '422':
+          $ref: '#/components/responses/422'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+    put:
+      summary: Create or replace a workspace
+      x-eov-operation-id: put
+      x-eov-operation-handler: externalWorkspaces
+      description: 'Create or replace a workspace to control its access by users and provide metadata about the workspace to Unito.
+
+        If there is no matching workspace, one will be created. If a matching workspace exists, it will be replaced. Therefore it is important to always provide the full set of properties and metadata on each call.
+
+        It is possible to create workspaces using this endpoint before any user accesses the workspace through an embed. Until the workspace is first accessed by a user, the workspace will not be returned by any usage reports endpoints.
+
+        '
+      tags:
+      - Workspaces
+      parameters:
+      - $ref: '#/components/parameters/EmbedIdParam'
+      - $ref: '#/components/parameters/ExternalWorkspaceIdParam'
+      requestBody:
+        description: Information to create or replace your workspace
+        content:
+          application/json:
+            schema:
+              type: object
+              additionalProperties: false
+              properties:
+                externalStatus:
+                  $ref: '#/components/schemas/WorkspaceExternalStatus'
+                externalData:
+                  $ref: '#/components/schemas/WorkspaceExternalData'
+      responses:
+        '200':
+          $ref: '#/components/responses/Workspace'
+        '401':
+          $ref: '#/components/responses/401'
+        '404':
+          $ref: '#/components/responses/404'
+        '422':
+          $ref: '#/components/responses/422'
+        '429':
+          $ref: '#/components/responses/429'
+        '500':
+          $ref: '#/components/responses/500'
+components:
+  responses:
+    '429':
+      description: Too Many Requests
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Workspace:
+      description: A workspace
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Workspace'
+    '422':
+      description: Unprocessable Entity
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    AllWorkspaces:
+      description: All workspaces
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - total
+            - data
+            properties:
+              total:
+                description: The number of workspaces associated to the embed.
+                type: number
+              data:
+                description: An array containing a detailed view of all the worksapces associated to the embed.
+                type: array
+                items:
+                  $ref: '#/components/schemas/Workspace'
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '401':
+      description: 'Unauthorized: API key is missing or invalid'
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+  schemas:
+    Workspace:
+      description: A workspace
+      type: object
+      required:
+      - id
+      - externalWorkspaceId
+      - externalStatus
+      - externalData
+      properties:
+        id:
+          type: number
+        externalWorkspaceId:
+          type: string
+          description: 'A native unique identifier for the  account, organization or group
+
+            that the user accessing the embed belongs to.
+
+            Must match the workspace_id_ext passed in the iframe URL
+
+            '
+        externalStatus:
+          $ref: '#/components/schemas/WorkspaceExternalStatus'
+        externalData:
+          $ref: '#/components/schemas/WorkspaceExternalData'
+    WorkspaceExternalStatus:
+      description: Determines whether the worskpace is accessible and syncing data.
+      type: string
+      enum:
+      - active
+      - trialing
+      - disabled
+    WorkspaceExternalData:
+      description: A set of name-value pairs needed by Unito as per agreement, typically for billing purposes.
+      type: object
+      additionalProperties: true
+      example:
+        sku: example-product-sku
+    Error:
+      description: An error is returned from the API when a request fails to execute.
+      type: object
+      required:
+      - message
+      properties:
+        message:
+          description: The message of the error.
+          type: string
+        details:
+          description: The details of the error.
+          type: object
+          additionalProperties: true
+  parameters:
+    EmbedIdParam:
+      in: path
+      name: embedId
+      description: The identifier of the embed
+      required: true
+      schema:
+        type: string
+    ExternalWorkspaceIdParam:
+      in: path
+      name: externalWorkspaceId
+      description: A native unique identifier for the account, organization or group that the user accessing the embed belongs to. Must match the workspace_id_ext passed in the iframe URL
+      required: true
+      schema:
+        type: string
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key

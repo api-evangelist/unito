@@ -1,0 +1,52 @@
+openapi: 3.0.3
+info:
+  title: Unito Embed Reports Server API
+  version: 0.1.4
+  description: '<h2>Welcome to Unito Embed API documentation</h2> <p>In order to be able to use that api, Unito must first create an embed entity for you and give you its api key. <br>Once you have access to an embed, there are 2 main resources for  you to interact with </p> <p> <b>Workspaces - </b> Allow you to give us information about the entity (workspaces, organization, group, ... ) that the user accessing the embed belongs to. <br> Its unique identifier <i>externalWorkspaceId</i> is the value that you pass in the iframe URL. <br> The information provided regarding the status of that entity will allow us to keep up to date the status of the Unito''s workspace subscription. </p>
+
+    <p> <b>Reports - </b> You can select froma list of pre-made reports that our data team has been building in order to help you better understand how your users benefit from Unito, how many flows did they create, with which other tools did they connect and how big is their usage (changes synced, items in sync, ... ) </p>'
+servers:
+- url: http://localhost:9080
+  description: local
+- url: https://staging-api.unito.io
+  description: staging
+- url: https://api.unito.io
+  description: production
+  variables:
+    embedId:
+      default: wrike
+security:
+- ApiKeyAuth: []
+tags:
+- name: Server
+paths:
+  /health/ready:
+    get:
+      summary: Whether the service is ready to serve requests
+      x-eov-operation-id: ready
+      x-eov-operation-handler: health
+      tags:
+      - Server
+      security: []
+      responses:
+        '200':
+          description: The service is ready to receive requests
+        '503':
+          description: The service is NOT ready to receive requests
+  /health/alive:
+    get:
+      summary: Whether the service is responsive
+      x-eov-operation-id: alive
+      x-eov-operation-handler: health
+      tags:
+      - Server
+      security: []
+      responses:
+        '200':
+          description: The service is alive
+components:
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: header
+      name: X-API-Key
