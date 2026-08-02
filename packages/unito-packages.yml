@@ -1,0 +1,46 @@
+generated: '2026-07-21'
+method: searched
+source: https://registry.npmjs.org (maintainer unitoio-dev) + https://dev.unito.io/docs
+packages:
+- language: typescript
+  registry: npm
+  name: '@unito/integration-sdk'
+  url: https://www.npmjs.com/package/@unito/integration-sdk
+  install: npm install @unito/integration-sdk
+  official: true
+  description: Connector SDK ("Integration SDK") - tools and libraries for building
+    Unito two-way sync connectors (cache, contexts, errors, handlers, integration,
+    logger, provider modules).
+  docs: https://dev.unito.io/docs/connectors/SDK/getStarted/
+  latest: 7.0.0
+- language: typescript
+  registry: npm
+  name: '@unito/integration-cli'
+  url: https://www.npmjs.com/package/@unito/integration-cli
+  install: npm install --global @unito/integration-cli
+  official: true
+  description: Connector CLI ("Integration CLI") - command-line tool to build, debug,
+    test and deploy Unito connectors.
+  docs: https://dev.unito.io/docs/connectors/CLI/getStarted/
+  latest: 1.8.1
+- language: typescript
+  registry: npm
+  name: cachette
+  url: https://www.npmjs.com/package/cachette
+  install: npm install cachette
+  official: true
+  description: Resilient cache library supporting concurrent requests through local
+    cache or Redis, published by Unito (maintainer unitoio-dev, MIT).
+  latest: 6.1.2
+- language: typescript
+  registry: npm
+  name: backoff-decorator
+  url: https://www.npmjs.com/package/backoff-decorator
+  install: npm install backoff-decorator
+  official: true
+  description: Exponential retry backoff library offering full jitter and decorators,
+    published by Unito (github.com/unitoio/backoff-decorator, MIT).
+  latest: 0.1.18
+notes: No first-party packages found on PyPI, Maven Central, NuGet, pkg.go.dev, RubyGems,
+  Packagist, or crates.io. Unito's developer surface is TypeScript/Node (connector
+  platform).

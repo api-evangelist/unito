@@ -1,0 +1,44 @@
+generated: '2026-07-21'
+method: searched
+source: https://unito.io/security/ + openapi/unito-embeds-openapi-original.json
+standards:
+- id: soc2-type2
+  conforms: true
+  evidence: https://unito.io/security/ states "Unito is SOC 2 Type 2 certified"
+- id: gdpr
+  conforms: true
+  evidence: https://unito.io/security/ states compliance with European GDPR
+- id: ccpa
+  conforms: true
+  evidence: https://unito.io/security/ states compliance with California CCPA
+- id: quebec-loi-25
+  conforms: true
+  evidence: https://unito.io/security/ states compliance with Quebec Loi 25
+- id: oauth2
+  conforms: false
+  evidence: Unito Embed API uses apiKey (X-API-Key header) security only; no oauth2
+    securityScheme in the OpenAPI. (OAuth2 appears only in connector-building recipes
+    for third-party providers.)
+- id: oidc
+  conforms: false
+  evidence: no openIdConnect securityScheme and no /.well-known/openid-configuration
+    (404 probed 2026-07-21)
+- id: rfc9457-problem-details
+  conforms: false
+  evidence: errors use a custom application/json envelope {message, details}, not
+    application/problem+json
+- id: pagination
+  conforms: true
+  evidence: offset/limit pagination query object with PaginatedResult (total, pageSize,
+    hasNextPage) in openapi/unito-embeds-openapi-original.json
+- id: rate-limit-signaling
+  conforms: true
+  evidence: 429 Too Many Requests responses declared on Embed API operations
+- id: json-api
+  conforms: false
+  evidence: plain JSON resource envelopes; no JSON:API media type
+- id: idempotency
+  conforms: false
+  evidence: no Idempotency-Key contract documented on the Embed API (workspace PUT
+    is replace-semantics; connector webhook-subscription idempotency is a requirement
+    Unito places on third-party connectors, not an Embed API feature)

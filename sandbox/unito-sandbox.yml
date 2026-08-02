@@ -1,0 +1,25 @@
+generated: '2026-07-21'
+method: searched
+source: openapi/unito-embeds-openapi-original.json + https://dev.unito.io/docs/connectors/configuration/testAccount/
+environments:
+- name: production
+  url: https://api.unito.io
+  description: Production Embed API server (from OpenAPI servers[]).
+- name: staging
+  url: https://staging-api.unito.io
+  description: Staging Embed API server published in the OpenAPI servers[] list.
+test_data:
+  notes: Unito publishes no magic test values (no test cards, tokens, or fixture
+    identifiers). Embed API keys are issued by Unito per embed entity.
+connector_testing:
+  description: Connector developers configure test accounts in the connector's .unito.json
+    configuration; the Integration CLI runs tests and an interactive debugger against
+    them, and can populate or refresh OAuth2 test-account credentials.
+  docs:
+  - https://dev.unito.io/docs/connectors/configuration/testAccount/
+  - https://dev.unito.io/docs/connectors/CLI/debugger/
+  tooling:
+  - integration-cli test
+  - integration-cli dev
+  - integration-cli oauth2
+  - integration-cli publish --live-preview

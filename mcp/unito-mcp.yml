@@ -1,0 +1,26 @@
+generated: '2026-07-21'
+method: derived
+status: candidate
+source: openapi/unito-embeds-openapi-original.json
+notes: No official Unito MCP server found (official MCP registry, npm, and dev.unito.io
+  searched 2026-07-21). Candidate tool list derived from the Unito Embed API OpenAPI
+  operations; the spec uses x-eov-operation-id handler ids rather than globally unique
+  operationIds, so tools are keyed by method + path.
+server:
+  name: unito-embed
+  transport: http
+tools:
+- name: list_workspaces
+  description: List all workspaces associated with an embed
+  source_operation: openapi/unito-embeds-openapi-original.json#GET /embeds/{embedId}/workspaces
+- name: get_workspace
+  description: Get a workspace by its external workspace id
+  source_operation: openapi/unito-embeds-openapi-original.json#GET /embeds/{embedId}/workspaces/{externalWorkspaceId}
+- name: put_workspace
+  description: Create or replace a workspace (controls access and passes billing metadata
+    such as externalStatus and externalData)
+  source_operation: openapi/unito-embeds-openapi-original.json#PUT /embeds/{embedId}/workspaces/{externalWorkspaceId}
+- name: get_usage_report
+  description: Get a full usage report (flows-usage or workspaces-usage) for the embed,
+    paginated with offset/limit
+  source_operation: openapi/unito-embeds-openapi-original.json#GET /embeds/{embedId}/reports/{reportType}

@@ -1,8 +1,13 @@
 aid: unito
 name: Unito
-description: Unito is a company surfaced as a portfolio company of 500-global, bessemer-venture-partners
-  and added to the API Evangelist network as a stub for enrichment. This profile is a lead awaiting the
-  enrichment pipeline.
+description: Unito is a two-way sync and integration platform that keeps work items
+  in sync across 60+ SaaS tools such as Asana, Jira, Trello, GitHub, Azure DevOps,
+  ServiceNow, Salesforce, and Smartsheet, with no-code field mappings and rules. For
+  developers Unito offers a Connector Developer Platform (TypeScript SDK + CLI for
+  building two-way sync connectors), an embeddable Sync Embed iframe, and the Unito
+  Embed API - a REST API for embedding partners to manage workspaces and pull flow
+  and workspace usage reports. Unito is SOC 2 Type 2 certified and based in Montreal,
+  Canada.
 url: https://raw.githubusercontent.com/api-evangelist/unito/refs/heads/main/apis.yml
 x-type: company
 x-source: vc-portfolio
@@ -11,17 +16,151 @@ x-backed-by:
 - bessemer-venture-partners
 x-tier: stub
 x-tier-reason: portfolio-lead
+accessModel:
+  pricing: unknown
+  onboarding: self-serve
+  trial: false
+  try_now: false
+  public: false
+  label: Self-serve signup
+  confidence: medium
+  source:
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 specificationVersion: '0.20'
+x-enrichment:
+  date: '2026-07-21'
+  status: enriched
+  artifacts_added: 22
+  pass: local-v1
 created: '2026-07-17'
-modified: '2026-07-17'
+modified: '2026-07-21'
 tags:
-- Company
-apis: []
+- Integration
+- Two-Way Sync
+- Workflow Automation
+- Project Management
+- Collaboration
+- Embedded Integrations
+- SaaS
+image: https://avatars.githubusercontent.com/u/13460182
+apis:
+- aid: unito:unito-reports-api
+  name: Unito Reports API
+  description: The Reports API from Unito — 1 operation(s) for reports.
+  humanURL: https://dev.unito.io/docs/embeds/embedApi/
+  baseURL: https://api.unito.io
+  tags:
+  - Reports
+  properties:
+  - type: OpenAPI
+    url: openapi/unito-reports-api-openapi.yml
+  - type: Documentation
+    url: https://dev.unito.io/docs/embeds/embedApi/
+  - type: APIReference
+    url: https://api.unito.io/embeds/docs/
+- aid: unito:unito-server-api
+  name: Unito Server API
+  description: The Server API from Unito — 2 operation(s) for server.
+  humanURL: https://dev.unito.io/docs/embeds/embedApi/
+  baseURL: https://api.unito.io
+  tags:
+  - Server
+  properties:
+  - type: OpenAPI
+    url: openapi/unito-server-api-openapi.yml
+  - type: Documentation
+    url: https://dev.unito.io/docs/embeds/embedApi/
+  - type: APIReference
+    url: https://api.unito.io/embeds/docs/
+- aid: unito:unito-workspaces-api
+  name: Unito Workspaces API
+  description: The Workspaces API from Unito — 2 operation(s) for workspaces.
+  humanURL: https://dev.unito.io/docs/embeds/embedApi/
+  baseURL: https://api.unito.io
+  tags:
+  - Workspaces
+  properties:
+  - type: OpenAPI
+    url: openapi/unito-workspaces-api-openapi.yml
+  - type: Documentation
+    url: https://dev.unito.io/docs/embeds/embedApi/
+  - type: APIReference
+    url: https://api.unito.io/embeds/docs/
 maintainers:
 - FN: Kin Lane
   email: kin@apievangelist.com
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: AgenticAccess
+  url: agentic-access/unito-agentic-access.yml
+- type: TrustCenter
+  url: security/unito-trust-center.yml
+- type: DomainSecurity
+  url: security/unito-domain-security.yml
+- type: Authentication
+  url: authentication/unito-authentication.yml
 - type: Website
   url: https://unito.io
+- type: DeveloperPortal
+  url: https://dev.unito.io/
+- type: Documentation
+  url: https://dev.unito.io/docs/
+- type: APIReference
+  url: https://api.unito.io/embeds/docs/
+- type: GettingStarted
+  url: https://dev.unito.io/docs/intro/
+- type: Support
+  url: https://guide.unito.io/en/
+- type: Blog
+  url: https://unito.io/blog/
+- type: GitHubOrganization
+  url: https://github.com/unitoio
+- type: Pricing
+  url: https://unito.io/pricing/
+- type: SignUp
+  url: https://app.unito.io/#/signup
+- type: Login
+  url: https://app.unito.io/
+- type: TermsOfService
+  url: https://unito.io/terms/
+- type: PrivacyPolicy
+  url: https://unito.io/privacy/
+- type: Contact
+  url: https://unito.io/contact/
+- type: StatusPage
+  url: https://unitoio.statuspage.io/
+- type: Packages
+  url: packages/unito-packages.yml
+- type: SDKs
+  url: packages/unito-packages.yml
+- type: WellKnown
+  url: well-known/unito-well-known.yml
+- type: MCPServer
+  url: mcp/unito-mcp.yml
+- type: LLMsTxt
+  url: llms/unito-llms.txt
+- type: Conformance
+  url: conformance/unito-conformance.yml
+- type: Compliance
+  url: https://unito.io/security/
+- type: ErrorCatalog
+  url: errors/unito-problem-types.yml
+- type: Lifecycle
+  url: lifecycle/unito-lifecycle.yml
+- type: Sandbox
+  url: sandbox/unito-sandbox.yml
+- type: Conventions
+  url: conventions/unito-conventions.yml
+- type: CLI
+  url: cli/unito-cli.yml
+- type: Components
+  url: components/unito-components.yml
+- type: DataModel
+  url: data-model/unito-data-model.yml
+- type: Webhooks
+  url: asyncapi/unito-connector-webhooks.yml
+- type: AgentSkill
+  url: skills/_index.yml

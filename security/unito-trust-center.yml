@@ -1,0 +1,16 @@
+generated: '2026-07-21'
+method: searched
+probe: true
+source: https://unito.io/security/
+url: https://unito.io/security/
+certifications:
+- SOC 2
+- PCI DSS
+- GDPR
+evidence:
+- source: https://unito.io/security/
+  keywords:
+  - soc 2
+  - pci dss
+  - pci-dss
+  - gdpr

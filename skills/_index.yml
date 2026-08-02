@@ -1,0 +1,18 @@
+generated: '2026-07-21'
+method: generated
+skills:
+- file: unito-manage-embed-workspaces.md
+  name: Manage Unito embed workspaces
+  api: openapi/unito-embeds-openapi-original.json
+  operations:
+  - GET /embeds/{embedId}/workspaces
+  - GET /embeds/{embedId}/workspaces/{externalWorkspaceId}
+  - PUT /embeds/{embedId}/workspaces/{externalWorkspaceId}
+- file: unito-embed-usage-reporting.md
+  name: Pull Unito embed usage reports
+  api: openapi/unito-embeds-openapi-original.json
+  operations:
+  - GET /embeds/{embedId}/reports/{reportType}
+notes: The Unito Embed API spec uses x-eov-operation-id handler ids rather than
+  globally unique operationIds, so operations are referenced by method + path
+  (verified verbatim against the spec).

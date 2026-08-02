@@ -1,0 +1,45 @@
+generated: '2026-07-21'
+method: searched
+source: https://dev.unito.io/docs/embeds/embedApi/ + openapi/unito-embeds-openapi-original.json
+authentication:
+  style: api-key
+  header: X-API-Key
+  notes: Embed API keys are issued by Unito per embed entity. See authentication/unito-authentication.yml.
+idempotency:
+  supported: false
+  notes: No Idempotency-Key contract is documented for the Embed API. Workspace PUT
+    is create-or-replace (full replacement semantics, so retries are naturally safe
+    for that operation). Webhook-subscription idempotency is a requirement Unito
+    places on third-party connector implementations, not an Embed API feature.
+pagination:
+  style: offset
+  request:
+    param: pagination
+    in: query
+    fields:
+      offset: Number of first results to skip (default 0)
+      limit: Maximum number of results after the offset (default 1000, max 10000)
+  response:
+    fields:
+    - total
+    - pageSize
+    - hasNextPage
+  applies_to:
+  - GET /embeds/{embedId}/reports/{reportType}
+media_type: application/json
+error_envelope:
+  shape: '{message, details}'
+  reference: errors/unito-problem-types.yml
+rate_limits:
+  signaling: 429 Too Many Requests declared on all authenticated operations; no
+    documented limit values or rate-limit headers found.
+request_tracing: none-documented
+versioning:
+  reference: lifecycle/unito-lifecycle.yml
+data_freshness:
+  reports: Usage-report data is refreshed every few hours, at most every 24h; workspaces
+    with status "disabled" are excluded from reports.
+connector_platform:
+  credentials_header: X-Unito-Credentials (Unito passes customer credentials to connectors)
+  notes: Connectors are HTTP servers implementing Unito's Connector API specification
+    (graph operations, credential account, health, optional webhook operations).

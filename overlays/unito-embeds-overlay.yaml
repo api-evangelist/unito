@@ -1,0 +1,41 @@
+overlay: 1.0.0
+info:
+  title: API Evangelist enhancements for the Unito Embed API
+  version: 1.0.0
+extends: openapi/unito-embeds-openapi-original.json
+x-generated: '2026-07-21'
+x-method: generated
+actions:
+- target: $.info
+  update:
+    x-apievangelist:
+      provider: unito
+      profile: https://raw.githubusercontent.com/api-evangelist/unito/refs/heads/main/apis.yml
+      humanURL: https://dev.unito.io/docs/embeds/embedApi/
+      notes: Harvested 2026-07-21 from https://api.unito.io/embeds/docs/openapi.json
+- target: $.paths['/embeds/{embedId}/workspaces'].get
+  update:
+    operationId: listWorkspaces
+    description: List every workspace associated with the embed. Returns total plus
+      a detailed array of workspaces.
+- target: $.paths['/embeds/{embedId}/workspaces/{externalWorkspaceId}'].get
+  update:
+    operationId: getWorkspace
+    description: Retrieve a single workspace by its external workspace id (the value
+      passed in the embed iframe URL).
+- target: $.paths['/embeds/{embedId}/workspaces/{externalWorkspaceId}'].put
+  update:
+    operationId: putWorkspace
+- target: $.paths['/embeds/{embedId}/reports/{reportType}'].get
+  update:
+    operationId: getUsageReport
+- target: $.paths['/health/ready'].get
+  update:
+    operationId: healthReady
+- target: $.paths['/health/alive'].get
+  update:
+    operationId: healthAlive
+x-notes: The upstream spec relies on x-eov-operation-id/x-eov-operation-handler pairs
+  (express-openapi-validator) instead of unique operationIds, and two GET operations
+  describe themselves as "TBD". This overlay adds globally unique operationIds and
+  fills those descriptions without mutating the harvested original.

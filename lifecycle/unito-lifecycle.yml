@@ -1,0 +1,23 @@
+generated: '2026-07-21'
+method: searched
+source: https://unitoio.statuspage.io/ + openapi/unito-embeds-openapi-original.json
+versioning:
+  scheme: none-documented
+  current: 0.1.4
+  notes: The Unito Embed API OpenAPI reports info.version 0.1.4; no URI/header versioning
+    scheme or public versioning policy is documented.
+deprecation:
+  policy_url: null
+  sunset_header: false
+  notes: No published deprecation policy or RFC 8594 Sunset header support found.
+    The iframe embed docs note renamed parameters (user_id -> external_user_id, account_id
+    -> external_workspace_id, container_id -> external_container_id) with the old
+    names flagged as legacy.
+sla:
+  url: null
+  notes: No public SLA found; enterprise terms are handled through sales.
+status_page: https://unitoio.statuspage.io/
+health_endpoints:
+- GET /health/ready
+- GET /health/alive
+deprecated_operations: []

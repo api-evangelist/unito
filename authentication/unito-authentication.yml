@@ -1,0 +1,21 @@
+generated: '2026-07-21'
+method: searched
+source: openapi/unito-embeds-openapi-original.json
+docs: https://dev.unito.io/docs/embeds/embedApi/
+notes: The Embed API docs confirm API requests are authenticated by an API key passed
+  in the X-API-Key header on each request; keys are issued by Unito per embed entity.
+  The connector platform separately delivers customer credentials to connectors via
+  the X-Unito-Credentials header (custom API key/username+password forms or OAuth2
+  authorizations defined in the connector configuration).
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - header
+schemes:
+- name: ApiKeyAuth
+  type: apiKey
+  in: header
+  parameter: X-API-Key
+  sources:
+  - openapi/unito-embeds-openapi-original.json

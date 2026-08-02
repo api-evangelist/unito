@@ -1,0 +1,44 @@
+generated: '2026-07-21'
+method: searched
+source: https://dev.unito.io/docs/embeds/getStarted/ + https://dev.unito.io/docs/embeds/iframeEmbedding/
+components:
+- family: Sync Embed
+  kind: iframe-micro-app
+  name: Unito Embedded Sync
+  description: A fully managed micro-app embedding Unito's two-way sync inside a
+    host application - authorization module supporting all connectors in Unito's
+    catalog (OAuth, access tokens, username/password), a fully-featured flow editor
+    with rules, mappings and activity logs, seamless user login and automatic workspace
+    creation. Stripped navigation, connector allow-listing, skinnable UI, no end-user
+    billing, minimal "Powered by Unito.io" branding.
+  url_template: https://app.unito.io/api/embed/<embed-id>
+  parameters:
+  - name: embed-id
+    required: true
+    description: Unique identifier provided by Unito for each embedding application.
+  - name: external_user_id
+    required: true
+    description: Native unique identifier for the user of the embedding app (formerly
+      user_id).
+  - name: external_workspace_id
+    required: true
+    description: Native unique identifier for the account/organization/group; one
+      Unito workspace is created per ID (formerly account_id).
+  - name: external_container_id
+    required: false
+    description: Limits flows in the embed to one container - project, board, sheet,
+      table (formerly container_id).
+  - name: bot_user_id / bot_auth_code
+    required: false
+    description: Native ID and OAuth authorization code for a pre-created, pre-authorized
+      bot account.
+  sizing:
+    min_width: 600px
+    ideal_width: 1000px
+    notes: Let the iframe handle its own scrolling; keep it within the window/popup
+      innerHeight.
+  companion_api: Unito Embed API (https://api.unito.io/embeds/<embed-id>/) for workspace
+    lifecycle and usage reporting.
+  docs: https://dev.unito.io/docs/embeds/getStarted/
+notes: No standalone web-component/JS element library is published; the embed surface
+  is iframe-based, complemented by the REST Embed API.

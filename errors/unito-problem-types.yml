@@ -1,0 +1,58 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/unito-embeds-openapi-original.json
+format: custom-json
+envelope:
+  description: Errors return an application/json body with a required message and
+    an optional details object.
+  schema:
+    message: string (required) - the message of the error
+    details: object (optional) - the details of the error
+problems:
+- status: 401
+  title: Unauthorized
+  description: API key is missing or invalid
+  remediation: Pass the embed API key issued by Unito in the X-API-Key header.
+  source_operations:
+  - GET /embeds/{embedId}/workspaces
+  - GET /embeds/{embedId}/workspaces/{externalWorkspaceId}
+  - PUT /embeds/{embedId}/workspaces/{externalWorkspaceId}
+  - GET /embeds/{embedId}/reports/{reportType}
+- status: 404
+  title: Not Found
+  description: The embed, workspace, or report type does not exist.
+  source_operations:
+  - GET /embeds/{embedId}/workspaces
+  - GET /embeds/{embedId}/workspaces/{externalWorkspaceId}
+  - PUT /embeds/{embedId}/workspaces/{externalWorkspaceId}
+  - GET /embeds/{embedId}/reports/{reportType}
+- status: 422
+  title: Unprocessable Entity
+  description: The request body or parameters failed validation (e.g. invalid externalStatus
+    or additional properties on the workspace payload).
+  source_operations:
+  - GET /embeds/{embedId}/workspaces
+  - GET /embeds/{embedId}/workspaces/{externalWorkspaceId}
+  - PUT /embeds/{embedId}/workspaces/{externalWorkspaceId}
+- status: 429
+  title: Too Many Requests
+  description: Rate limit exceeded.
+  remediation: Back off and retry later.
+  source_operations:
+  - GET /embeds/{embedId}/workspaces
+  - GET /embeds/{embedId}/workspaces/{externalWorkspaceId}
+  - PUT /embeds/{embedId}/workspaces/{externalWorkspaceId}
+  - GET /embeds/{embedId}/reports/{reportType}
+- status: 500
+  title: Internal Server Error
+  description: Unexpected server-side failure.
+  source_operations:
+  - GET /embeds/{embedId}/workspaces
+  - GET /embeds/{embedId}/workspaces/{externalWorkspaceId}
+  - PUT /embeds/{embedId}/workspaces/{externalWorkspaceId}
+  - GET /embeds/{embedId}/reports/{reportType}
+- status: 503
+  title: Service Unavailable
+  description: The service is not ready to receive requests (health surface).
+  source_operations:
+  - GET /health/ready

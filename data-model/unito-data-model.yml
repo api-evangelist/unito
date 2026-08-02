@@ -1,0 +1,58 @@
+generated: '2026-07-21'
+method: derived
+source: openapi/unito-embeds-openapi-original.json
+entities:
+- name: Embed
+  description: An embed entity Unito creates for each embedding partner; scopes all
+    API access (path parameter embedId, authenticated by its API key).
+  ids: [embedId]
+- name: Workspace
+  description: Houses the flows of a partner's account/organization/group. Keyed
+    externally by externalWorkspaceId (matches the iframe URL parameter).
+  ids: [id, externalWorkspaceId]
+  fields: [externalStatus, externalData]
+- name: WorkspaceExternalStatus
+  description: 'Enum: active | trialing | disabled.'
+- name: WorkspaceUsage
+  description: Per-workspace usage report record (items kept in sync, changes synced
+    last 30d, tools, flow counts, tool-pair stats).
+- name: FlowUsage
+  description: Per-flow usage report record (active state, mapped fields count,
+    changes synced last 30d, exactly two ToolInFlow entries).
+- name: ToolInFlow
+  description: One side of a flow - tool name, itemType, externalContainerId, canCreateItems/canUpdateItems.
+- name: ReportType
+  description: 'Enum: flows-usage | workspaces-usage.'
+relationships:
+- from: Embed
+  to: Workspace
+  type: has_many
+  via: /embeds/{embedId}/workspaces
+- from: Workspace
+  to: Embed
+  type: belongs_to
+  via: embedId
+- from: Embed
+  to: WorkspaceUsage
+  type: has_many
+  via: /embeds/{embedId}/reports/workspaces-usage
+- from: Embed
+  to: FlowUsage
+  type: has_many
+  via: /embeds/{embedId}/reports/flows-usage
+- from: WorkspaceUsage
+  to: Workspace
+  type: belongs_to
+  via: externalWorkspaceId
+- from: FlowUsage
+  to: Workspace
+  type: belongs_to
+  via: externalWorkspaceId
+- from: FlowUsage
+  to: ToolInFlow
+  type: has_many
+  via: tools (exactly 2)
+- from: Workspace
+  to: WorkspaceExternalStatus
+  type: has_one
+  via: externalStatus

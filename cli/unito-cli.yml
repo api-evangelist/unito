@@ -1,0 +1,44 @@
+generated: '2026-07-21'
+method: searched
+source: https://dev.unito.io/docs/connectors/CLI/getStarted/ + https://dev.unito.io/docs/connectors/CLI/commands/
+name: Integration CLI
+binary: integration-cli
+package: '@unito/integration-cli'
+install:
+- method: npm
+  command: npm install --global @unito/integration-cli
+auth:
+  method: api-key
+  command: integration-cli login
+  notes: An API key is required for most commands; keys are currently issued through
+    a Unito partner manager (restricted developer-platform preview).
+configuration:
+  file: .unito.json
+  notes: Connector root configuration - name, authorization methods, encrypted secrets,
+    test accounts. Alternate files via --config-path.
+commands:
+- name: activity
+  description: Show the activity associated with this connector.
+- name: dev
+  description: Develop your connector using the interactive debugger tool.
+- name: encrypt
+  description: Encrypt client secrets and passwords.
+- name: init
+  description: Initialize a new connector.
+- name: invite
+  description: Give access to your connector to other users.
+- name: login
+  description: Authenticate yourself using your API key.
+- name: oauth2
+  description: Perform an OAuth2 workflow to populate or refresh a test account's
+    credentials.
+- name: publish
+  description: Publish your connector (supports --live-preview and --config-path).
+- name: test
+  description: Test your connector.
+- name: upgrade
+  description: Upgrade the CLI (also self-upgrades automatically).
+flows:
+- Initialize a connector (init), develop against the interactive debugger (dev, with
+  ngrok tunneling), test with configured test accounts (test), then publish to Unito
+  cloud infrastructure (publish).

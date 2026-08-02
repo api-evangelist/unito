@@ -1,0 +1,18 @@
+{
+  "provider": "unito",
+  "sources": [
+    "unito-reports-api-openapi.yml",
+    "unito-server-api-openapi.yml",
+    "unito-workspaces-api-openapi.yml"
+  ],
+  "outputs": [
+    "unito-reports-api-openapi.yml",
+    "unito-server-api-openapi.yml",
+    "unito-workspaces-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}

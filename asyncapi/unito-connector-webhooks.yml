@@ -1,0 +1,31 @@
+generated: '2026-07-21'
+method: searched
+source: https://dev.unito.io/docs/connectors/apiSpecification/webhookOperations/ +
+  https://dev.unito.io/docs/connectors/configuration/webhooks/
+type: Webhooks
+spec_type: none
+notes: Unito publishes no AsyncAPI document. Its documented event surface is the
+  webhook layer of the Connector API specification - Unito subscribes to item changes
+  through connectors, which forward provider webhooks back to Unito for real-time
+  two-way sync. The operations below are the webhook endpoints a connector implements
+  (optional; opted into via webhookSubscriptionsRelativeUrl and webhookParsingRelativeUrl
+  in the connector configuration).
+direction: unito-consumes
+webhooks:
+- name: webhook-subscription
+  method: PUT
+  example_path: /webhooks/register
+  description: Unito signifies interest in an item; the connector forwards the subscription
+    intent to the provider. Payload includes itemPath, targetUrl (https://api.unito.io/webhooks/receive),
+    and action (start). Must be idempotent - repeated subscriptions for the same
+    item return 204. Errors use the connector error envelope (e.g. 422 when an item
+    does not support webhooks).
+- name: webhook-parse
+  method: POST
+  example_path: /webhooks/parse
+  description: Parses a native provider webhook received on behalf of the connector.
+    Unauthenticated call carrying headers, the raw payload string, partition, and
+    receiving URL; returns WebhookParseResponsePayload entries (itemSummary with
+    path/canonicalPath, date, impactedRelations tree) or 204 when no items of interest
+    were detected.
+receive_endpoint: https://api.unito.io/webhooks/receive
