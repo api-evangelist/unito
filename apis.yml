@@ -94,6 +94,8 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- type: Overlay
+  url: overlays/unito-embeds-overlay.yaml
 - type: AgenticAccess
   url: agentic-access/unito-agentic-access.yml
 - type: TrustCenter
