@@ -1,0 +1,48 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Unito Embed Reports Server API",
+    "version": "0.1.4"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-Key",
+      "value": "{{X-API-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Server",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Whether the service is ready to serve requests",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9080/health/ready"
+          },
+          "docs": "Whether the service is ready to serve requests"
+        },
+        {
+          "info": {
+            "name": "Whether the service is responsive",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9080/health/alive"
+          },
+          "docs": "Whether the service is responsive"
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

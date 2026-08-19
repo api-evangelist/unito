@@ -1,0 +1,99 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "Unito Embed Reports Workspaces API",
+    "version": "0.1.4"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "X-API-Key",
+      "value": "{{X-API-Key}}",
+      "placement": "header"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Workspaces",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List all workspaces",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9080/embeds/:embedId/workspaces",
+            "params": [
+              {
+                "name": "embedId",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the embed"
+              }
+            ]
+          },
+          "docs": "TBD"
+        },
+        {
+          "info": {
+            "name": "Get a workspace",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "http://localhost:9080/embeds/:embedId/workspaces/:externalWorkspaceId",
+            "params": [
+              {
+                "name": "embedId",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the embed"
+              },
+              {
+                "name": "externalWorkspaceId",
+                "value": "",
+                "type": "path",
+                "description": "A native unique identifier for the account, organization or group that the user accessing the embed belongs to. Must match the workspace_id_ext passed in the iframe URL"
+              }
+            ]
+          },
+          "docs": "TBD"
+        },
+        {
+          "info": {
+            "name": "Create or replace a workspace",
+            "type": "http"
+          },
+          "http": {
+            "method": "PUT",
+            "url": "http://localhost:9080/embeds/:embedId/workspaces/:externalWorkspaceId",
+            "params": [
+              {
+                "name": "embedId",
+                "value": "",
+                "type": "path",
+                "description": "The identifier of the embed"
+              },
+              {
+                "name": "externalWorkspaceId",
+                "value": "",
+                "type": "path",
+                "description": "A native unique identifier for the account, organization or group that the user accessing the embed belongs to. Must match the workspace_id_ext passed in the iframe URL"
+              }
+            ],
+            "body": {
+              "type": "json",
+              "data": "{}"
+            }
+          },
+          "docs": "Create or replace a workspace to control its access by users and provide metadata about the workspace to Unito.\nIf there is no matching workspace, one will be created. If a matching workspace exists, it will be replaced. Therefore it is important to always provide the full set of properties and metadata on each call.\nIt is possible to create workspaces using this endpoint before any user accesses the workspace through an embed. Until the workspace is first accessed by a user, the workspace will "
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

@@ -1,0 +1,465 @@
+{
+  "item": [
+    {
+      "id": "531aee2e-ec6f-441e-a0b2-3d74724a5b21",
+      "name": "Reports",
+      "description": {
+        "content": "",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "7068f917-7211-4c56-a62b-807a4bfa6a5f",
+          "name": "Get a full usage report on your flows",
+          "request": {
+            "name": "Get a full usage report on your flows",
+            "description": {
+              "content": "Return a complete usage report for each individual flow created within all workspaces of your embed.\nWorkspaces with a status of \"disabled\" are excluded.\nData is refreshed every few hours, at most every 24h.\n",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "embeds",
+                ":embedId",
+                "reports",
+                ":reportType"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "offset",
+                  "value": "0",
+                  "description": "Details to paginate the results."
+                },
+                {
+                  "disabled": false,
+                  "key": "limit",
+                  "value": "1000",
+                  "description": "Details to paginate the results."
+                }
+              ],
+              "variable": [
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "embedId",
+                  "description": "(Required) The identifier of the embed"
+                },
+                {
+                  "disabled": false,
+                  "type": "any",
+                  "value": "<string>",
+                  "key": "reportType",
+                  "description": "(Required) The identifier of the embed"
+                }
+              ]
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "f0d85e7a-1c89-4ecb-95db-eeadbb0dcfbb",
+              "name": "The usage report for either: - all workspaces created from your embed. - each individual flow created within all workspaces of your embed",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "embeds",
+                    ":embedId",
+                    "reports",
+                    ":reportType"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1000"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "embedId",
+                      "description": "(Required) The identifier of the embed"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reportType",
+                      "description": "(Required) The identifier of the embed"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"data\": [\n    {\n      \"updatedAt\": \"1956-06-14T22:25:38.241Z\",\n      \"externalWorkspaceId\": \"string\",\n      \"workspaceId\": \"string\",\n      \"workspaceCreatedAt\": \"1988-05-22T00:17:14.383Z\",\n      \"itemsKeptInSyncCount\": 6932,\n      \"changesSyncedLast30d\": 209,\n      \"tools\": [\n        \"ToolX\",\n        \"ToolY\",\n        \"ToolZ\"\n      ],\n      \"flowsCount\": 3262.2995559966485,\n      \"activeFlowsCount\": 2114.987680709145,\n      \"flowsEverCreatedCount\": 9145.70994085276,\n      \"daysWithChangesSyncedLast30D\": 2346,\n      \"toolPairsStats\": {\n        \"ToolX-ToolY\": {\n          \"activeFlowsCount\": 0,\n          \"changesSyncedLast30d\": 0,\n          \"flowsCount\": 0,\n          \"flowsEverCreatedCount\": 0\n        },\n        \"ToolX-ToolZ\": {\n          \"activeFlowsCount\": 0,\n          \"changesSyncedLast30d\": 0,\n          \"flowsCount\": 0,\n          \"flowsEverCreatedCount\": 0\n        }\n      }\n    },\n    {\n      \"updatedAt\": \"1968-11-16T02:29:22.236Z\",\n      \"externalWorkspaceId\": \"string\",\n      \"workspaceId\": \"string\",\n      \"workspaceCreatedAt\": \"2003-04-22T18:40:11.756Z\",\n      \"itemsKeptInSyncCount\": 9092,\n      \"changesSyncedLast30d\": 8556,\n      \"tools\": [\n        \"ToolX\",\n        \"ToolY\",\n        \"ToolZ\"\n      ],\n      \"flowsCount\": 1288.909331313236,\n      \"activeFlowsCount\": 283.89532578932955,\n      \"flowsEverCreatedCount\": 661.9534558685724,\n      \"daysWithChangesSyncedLast30D\": 4877,\n      \"toolPairsStats\": {\n        \"ToolX-ToolY\": {\n          \"activeFlowsCount\": 0,\n          \"changesSyncedLast30d\": 0,\n          \"flowsCount\": 0,\n          \"flowsEverCreatedCount\": 0\n        },\n        \"ToolX-ToolZ\": {\n          \"activeFlowsCount\": 0,\n          \"changesSyncedLast30d\": 0,\n          \"flowsCount\": 0,\n          \"flowsEverCreatedCount\": 0\n        }\n      }\n    }\n  ],\n  \"total\": 4987.352871207383,\n  \"pageSize\": 4616.75191271839,\n  \"hasNextPage\": false\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "c76d433b-dd8e-4471-a93a-71fe49637353",
+              "name": "Unauthorized: API key is missing or invalid",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "embeds",
+                    ":embedId",
+                    "reports",
+                    ":reportType"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1000"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "embedId",
+                      "description": "(Required) The identifier of the embed"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reportType",
+                      "description": "(Required) The identifier of the embed"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Unauthorized",
+              "code": 401,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"details\": {\n    \"key_0\": 6720.516692248367\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "e2302e58-4613-4a9f-8fb5-644352b85183",
+              "name": "Not Found",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "embeds",
+                    ":embedId",
+                    "reports",
+                    ":reportType"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1000"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "embedId",
+                      "description": "(Required) The identifier of the embed"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reportType",
+                      "description": "(Required) The identifier of the embed"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Not Found",
+              "code": 404,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"details\": {\n    \"key_0\": 6720.516692248367\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "b7245f24-4859-41cb-9865-d9cb970f3615",
+              "name": "Too Many Requests",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "embeds",
+                    ":embedId",
+                    "reports",
+                    ":reportType"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1000"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "embedId",
+                      "description": "(Required) The identifier of the embed"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reportType",
+                      "description": "(Required) The identifier of the embed"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Too Many Requests",
+              "code": 429,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"details\": {\n    \"key_0\": 6720.516692248367\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            },
+            {
+              "id": "95aa57a0-4ebd-401a-9edb-cfe4273b3c01",
+              "name": "Internal Server Error",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "embeds",
+                    ":embedId",
+                    "reports",
+                    ":reportType"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "offset",
+                      "value": "0"
+                    },
+                    {
+                      "key": "limit",
+                      "value": "1000"
+                    }
+                  ],
+                  "variable": [
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "embedId",
+                      "description": "(Required) The identifier of the embed"
+                    },
+                    {
+                      "disabled": false,
+                      "type": "any",
+                      "value": "<string>",
+                      "key": "reportType",
+                      "description": "(Required) The identifier of the embed"
+                    }
+                  ]
+                },
+                "header": [
+                  {
+                    "description": {
+                      "content": "Added as a part of security scheme: apikey",
+                      "type": "text/plain"
+                    },
+                    "key": "X-API-Key",
+                    "value": "<API Key>"
+                  },
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "Internal Server Error",
+              "code": 500,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"message\": \"string\",\n  \"details\": {\n    \"key_0\": 6720.516692248367\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "http://localhost:9080",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "X-API-Key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "header"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "3fac462d-de2d-4fef-9e62-e5792f95e4b1",
+    "name": "Unito Embed Reports API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "<h2>Welcome to Unito Embed API documentation</h2> <p>In order to be able to use that api, Unito must first create an embed entity for you and give you its api key. <br>Once you have access to an embed, there are 2 main resources for  you to interact with </p> <p> <b>Workspaces - </b> Allow you to give us information about the entity (workspaces, organization, group, ... ) that the user accessing the embed belongs to. <br> Its unique identifier <i>externalWorkspaceId</i> is the value that you pass in the iframe URL. <br> The information provided regarding the status of that entity will allow us to keep up to date the status of the Unito's workspace subscription. </p>\n<p> <b>Reports - </b> You can select froma list of pre-made reports that our data team has been building in order to help you better understand how your users benefit from Unito, how many flows did they create, with which other tools did they connect and how big is their usage (changes synced, items in sync, ... ) </p>",
+      "type": "text/plain"
+    }
+  }
+}
