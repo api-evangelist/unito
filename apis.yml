@@ -88,6 +88,8 @@ apis:
   humanURL: https://dev.unito.io/docs/embeds/embedApi/
   baseURL: https://api.unito.io
   tags:
+  - Servers
+  tags_raw:
   - Server
   properties:
   - type: OpenAPI
@@ -102,6 +104,8 @@ apis:
   humanURL: https://dev.unito.io/docs/embeds/embedApi/
   baseURL: https://api.unito.io
   tags:
+  - Workspace
+  tags_raw:
   - Workspaces
   properties:
   - type: OpenAPI
