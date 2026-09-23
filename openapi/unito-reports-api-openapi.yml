@@ -1,10 +1,11 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
   title: Unito Embed Reports API
   version: 0.1.4
-  description: '<h2>Welcome to Unito Embed API documentation</h2> <p>In order to be able to use that api, Unito must first create an embed entity for you and give you its api key. <br>Once you have access to an embed, there are 2 main resources for  you to interact with </p> <p> <b>Workspaces - </b> Allow you to give us information about the entity (workspaces, organization, group, ... ) that the user accessing the embed belongs to. <br> Its unique identifier <i>externalWorkspaceId</i> is the value that you pass in the iframe URL. <br> The information provided regarding the status of that entity will allow us to keep up to date the status of the Unito''s workspace subscription. </p>
+  description: 'Welcome to Unito Embed API documentation
 
-    <p> <b>Reports - </b> You can select froma list of pre-made reports that our data team has been building in order to help you better understand how your users benefit from Unito, how many flows did they create, with which other tools did they connect and how big is their usage (changes synced, items in sync, ... ) </p>'
+
+    In order to be able to use that api, Unito must first create an embed entity for you and give you its api key.'
 servers:
 - url: http://localhost:9080
   description: local
@@ -29,9 +30,7 @@ paths:
 
         Workspaces with a status of "disabled" are excluded.
 
-        Data is refreshed every few hours, at most every 24h.
-
-        '
+        Data is refreshed every few hours, at most every 24h.'
       tags:
       - Reports
       parameters:
@@ -49,14 +48,54 @@ paths:
           $ref: '#/components/responses/429'
         '500':
           $ref: '#/components/responses/500'
+      operationId: getEmbedsByEmbedIdReportsByReportType
+      x-operation-id-source: derived
 components:
+  responses:
+    '429':
+      description: Too Many Requests
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Report:
+      description: 'The usage report for either: - all workspaces created from your embed. - each individual flow created within all workspaces of your embed'
+      content:
+        application/json:
+          schema:
+            allOf:
+            - $ref: '#/components/schemas/PaginatedResult'
+            - description: A lisf of reports on flows.
+              type: object
+              required:
+              - data
+              properties:
+                data:
+                  description: The reports.
+                  type: array
+                  items:
+                    anyOf:
+                    - $ref: '#/components/schemas/WorkspaceUsage'
+                    - $ref: '#/components/schemas/FlowUsage'
+    '401':
+      description: 'Unauthorized: API key is missing or invalid'
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
   schemas:
-    ReportType:
-      description: What are the available report types an embed can query for ?
-      type: string
-      enum:
-      - flows-usage
-      - workspaces-usage
     WorkspaceUsage:
       type: object
       required:
@@ -140,6 +179,45 @@ components:
               changesSyncedLast30d: 0
               flowsCount: 0
               flowsEverCreatedCount: 0
+    ToolInFlow:
+      type: object
+      required:
+      - externalContainerId
+      - canCreateItems
+      - canUpdateItems
+      properties:
+        name:
+          type: string
+        itemType:
+          type: string
+          description: What kind of item is being synced. E.g. a task, card, contact, opportunity, row, etc.
+        externalContainerId:
+          type: string
+        canCreateItems:
+          type: boolean
+          description: whether the flow can create new items of itemType in externalContainerId
+        canUpdateItems:
+          type: boolean
+          description: whether the flow can update existing items of itemType in externalContainerId
+    ReportType:
+      description: What are the available report types an embed can query for ?
+      type: string
+      enum:
+      - flows-usage
+      - workspaces-usage
+    Error:
+      description: An error is returned from the API when a request fails to execute.
+      type: object
+      required:
+      - message
+      properties:
+        message:
+          description: The message of the error.
+          type: string
+        details:
+          description: The details of the error.
+          type: object
+          additionalProperties: true
     FlowUsage:
       type: object
       required:
@@ -201,39 +279,6 @@ components:
             externalContainerId: string
             canCreateItems: false
             canUpdateItems: false
-    ToolInFlow:
-      type: object
-      required:
-      - externalContainerId
-      - canCreateItems
-      - canUpdateItems
-      properties:
-        name:
-          type: string
-        itemType:
-          type: string
-          description: What kind of item is being synced. E.g. a task, card, contact, opportunity, row, etc.
-        externalContainerId:
-          type: string
-        canCreateItems:
-          type: boolean
-          description: whether the flow can create new items of itemType in externalContainerId
-        canUpdateItems:
-          type: boolean
-          description: whether the flow can update existing items of itemType in externalContainerId
-    Error:
-      description: An error is returned from the API when a request fails to execute.
-      type: object
-      required:
-      - message
-      properties:
-        message:
-          description: The message of the error.
-          type: string
-        details:
-          description: The details of the error.
-          type: object
-          additionalProperties: true
     PaginatedResult:
       description: A paginated result
       type: object
@@ -244,65 +289,7 @@ components:
           type: number
         hasNextPage:
           type: boolean
-  responses:
-    '429':
-      description: Too Many Requests
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Report:
-      description: 'The usage report for either: - all workspaces created from your embed. - each individual flow created within all workspaces of your embed'
-      content:
-        application/json:
-          schema:
-            allOf:
-            - $ref: '#/components/schemas/PaginatedResult'
-            - description: A lisf of reports on flows.
-              type: object
-              required:
-              - data
-              properties:
-                data:
-                  description: The reports.
-                  type: array
-                  items:
-                    anyOf:
-                    - $ref: '#/components/schemas/WorkspaceUsage'
-                    - $ref: '#/components/schemas/FlowUsage'
-    '404':
-      description: Not Found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    '500':
-      description: Internal Server Error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    '401':
-      description: 'Unauthorized: API key is missing or invalid'
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
   parameters:
-    EmbedIdParam:
-      in: path
-      name: embedId
-      description: The identifier of the embed
-      required: true
-      schema:
-        type: string
-    ReportTypeParam:
-      in: path
-      name: reportType
-      description: The identifier of the embed
-      required: true
-      schema:
-        $ref: '#/components/schemas/ReportType'
     PaginationParam:
       in: query
       name: pagination
@@ -324,6 +311,20 @@ components:
             default: 1000
             minimum: 0
             maximum: 10000
+    ReportTypeParam:
+      in: path
+      name: reportType
+      description: The identifier of the embed
+      required: true
+      schema:
+        $ref: '#/components/schemas/ReportType'
+    EmbedIdParam:
+      in: path
+      name: embedId
+      description: The identifier of the embed
+      required: true
+      schema:
+        type: string
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

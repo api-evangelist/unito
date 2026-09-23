@@ -1,10 +1,11 @@
-openapi: 3.0.3
+openapi: 3.2.0
 info:
-  title: Unito Embed Reports Server API
+  title: Unito Embed Server API
   version: 0.1.4
-  description: '<h2>Welcome to Unito Embed API documentation</h2> <p>In order to be able to use that api, Unito must first create an embed entity for you and give you its api key. <br>Once you have access to an embed, there are 2 main resources for  you to interact with </p> <p> <b>Workspaces - </b> Allow you to give us information about the entity (workspaces, organization, group, ... ) that the user accessing the embed belongs to. <br> Its unique identifier <i>externalWorkspaceId</i> is the value that you pass in the iframe URL. <br> The information provided regarding the status of that entity will allow us to keep up to date the status of the Unito''s workspace subscription. </p>
+  description: 'Welcome to Unito Embed API documentation
 
-    <p> <b>Reports - </b> You can select froma list of pre-made reports that our data team has been building in order to help you better understand how your users benefit from Unito, how many flows did they create, with which other tools did they connect and how big is their usage (changes synced, items in sync, ... ) </p>'
+
+    In order to be able to use that api, Unito must first create an embed entity for you and give you its api key.'
 servers:
 - url: http://localhost:9080
   description: local
@@ -33,6 +34,8 @@ paths:
           description: The service is ready to receive requests
         '503':
           description: The service is NOT ready to receive requests
+      operationId: getHealthReady
+      x-operation-id-source: derived
   /health/alive:
     get:
       summary: Whether the service is responsive
@@ -44,6 +47,8 @@ paths:
       responses:
         '200':
           description: The service is alive
+      operationId: getHealthAlive
+      x-operation-id-source: derived
 components:
   securitySchemes:
     ApiKeyAuth:

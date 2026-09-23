@@ -1,9 +1,7 @@
 {
   "provider": "unito",
   "sources": [
-    "unito-reports-api-openapi.yml",
-    "unito-server-api-openapi.yml",
-    "unito-workspaces-api-openapi.yml"
+    "_original/unito-embeds-openapi-original.json"
   ],
   "outputs": [
     "unito-reports-api-openapi.yml",
@@ -13,6 +11,17 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "unito-embeds-openapi-original.json: upgraded openapi 3.0.3 -> OpenAPI 3.2.0",
+    "unito-embeds-openapi-original.json: declared missing tag: Reports",
+    "unito-embeds-openapi-original.json: declared missing tag: Server",
+    "unito-embeds-openapi-original.json: declared missing tag: Workspaces",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "unito-reports-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "unito-server-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "unito-workspaces-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }
