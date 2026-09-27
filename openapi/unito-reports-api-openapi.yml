@@ -52,14 +52,20 @@ paths:
       x-operation-id-source: derived
 components:
   responses:
-    '429':
-      description: Too Many Requests
+    '401':
+      description: 'Unauthorized: API key is missing or invalid'
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
     '500':
       description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '404':
+      description: Not Found
       content:
         application/json:
           schema:
@@ -83,19 +89,117 @@ components:
                     anyOf:
                     - $ref: '#/components/schemas/WorkspaceUsage'
                     - $ref: '#/components/schemas/FlowUsage'
-    '401':
-      description: 'Unauthorized: API key is missing or invalid'
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    '404':
-      description: Not Found
+    '429':
+      description: Too Many Requests
       content:
         application/json:
           schema:
             $ref: '#/components/schemas/Error'
   schemas:
+    FlowUsage:
+      type: object
+      required:
+      - updatedAt
+      - flowId
+      - flowCreatedAt
+      - externalWorkspaceId
+      - workspaceId
+      - workspaceCreatedAt
+      - isActive
+      - mappedFieldsCount
+      - changesSyncedLast30d
+      - daysWithChangesSyncedLast30d
+      - tools
+      properties:
+        updatedAt:
+          description: The timestamp at which this report record was last updated.
+          type: string
+          format: date-time
+        flowId:
+          type: string
+        flowCreatedAt:
+          type: string
+          format: date-time
+        externalWorkspaceId:
+          type: string
+        workspaceId:
+          type: string
+        workspaceCreatedAt:
+          type: string
+          format: date-time
+        isActive:
+          description: Active flows CAN sync changes. It might or might not have done so recently. A flow becomes inactive when deleted by a user or when an issue prevents it from syncing (such as loosing access to a tool).
+          type: boolean
+        mappedFieldsCount:
+          description: How many data fields are mapped to sync between the two tools.
+          type: integer
+        changesSyncedLast30d:
+          description: How many changes were detected and synced across in the last 30 days.
+          type: integer
+        daysWithChangesSyncedLast30D:
+          description: How many of the last 30 days had sync activity.
+          type: integer
+        tools:
+          description: An array of always exactly 2 items, one per tool in the flow configuration. Order is undefined.
+          type: array
+          minItems: 2
+          maxItems: 2
+          items:
+            $ref: '#/components/schemas/ToolInFlow'
+          example:
+          - name: ToolX
+            itemType: Task
+            externalContainerId: string
+            canCreateItems: true
+            canUpdateItems: true
+          - name: ToolY
+            itemType: Issue
+            externalContainerId: string
+            canCreateItems: false
+            canUpdateItems: false
+    PaginatedResult:
+      description: A paginated result
+      type: object
+      properties:
+        total:
+          type: number
+        pageSize:
+          type: number
+        hasNextPage:
+          type: boolean
+    ToolInFlow:
+      type: object
+      required:
+      - externalContainerId
+      - canCreateItems
+      - canUpdateItems
+      properties:
+        name:
+          type: string
+        itemType:
+          type: string
+          description: What kind of item is being synced. E.g. a task, card, contact, opportunity, row, etc.
+        externalContainerId:
+          type: string
+        canCreateItems:
+          type: boolean
+          description: whether the flow can create new items of itemType in externalContainerId
+        canUpdateItems:
+          type: boolean
+          description: whether the flow can update existing items of itemType in externalContainerId
+    Error:
+      description: An error is returned from the API when a request fails to execute.
+      type: object
+      required:
+      - message
+      properties:
+        message:
+          description: The message of the error.
+          type: string
+        details:
+          description: The details of the error.
+          type: object
+          additionalProperties: true
     WorkspaceUsage:
       type: object
       required:
@@ -179,117 +283,27 @@ components:
               changesSyncedLast30d: 0
               flowsCount: 0
               flowsEverCreatedCount: 0
-    ToolInFlow:
-      type: object
-      required:
-      - externalContainerId
-      - canCreateItems
-      - canUpdateItems
-      properties:
-        name:
-          type: string
-        itemType:
-          type: string
-          description: What kind of item is being synced. E.g. a task, card, contact, opportunity, row, etc.
-        externalContainerId:
-          type: string
-        canCreateItems:
-          type: boolean
-          description: whether the flow can create new items of itemType in externalContainerId
-        canUpdateItems:
-          type: boolean
-          description: whether the flow can update existing items of itemType in externalContainerId
     ReportType:
       description: What are the available report types an embed can query for ?
       type: string
       enum:
       - flows-usage
       - workspaces-usage
-    Error:
-      description: An error is returned from the API when a request fails to execute.
-      type: object
-      required:
-      - message
-      properties:
-        message:
-          description: The message of the error.
-          type: string
-        details:
-          description: The details of the error.
-          type: object
-          additionalProperties: true
-    FlowUsage:
-      type: object
-      required:
-      - updatedAt
-      - flowId
-      - flowCreatedAt
-      - externalWorkspaceId
-      - workspaceId
-      - workspaceCreatedAt
-      - isActive
-      - mappedFieldsCount
-      - changesSyncedLast30d
-      - daysWithChangesSyncedLast30d
-      - tools
-      properties:
-        updatedAt:
-          description: The timestamp at which this report record was last updated.
-          type: string
-          format: date-time
-        flowId:
-          type: string
-        flowCreatedAt:
-          type: string
-          format: date-time
-        externalWorkspaceId:
-          type: string
-        workspaceId:
-          type: string
-        workspaceCreatedAt:
-          type: string
-          format: date-time
-        isActive:
-          description: Active flows CAN sync changes. It might or might not have done so recently. A flow becomes inactive when deleted by a user or when an issue prevents it from syncing (such as loosing access to a tool).
-          type: boolean
-        mappedFieldsCount:
-          description: How many data fields are mapped to sync between the two tools.
-          type: integer
-        changesSyncedLast30d:
-          description: How many changes were detected and synced across in the last 30 days.
-          type: integer
-        daysWithChangesSyncedLast30D:
-          description: How many of the last 30 days had sync activity.
-          type: integer
-        tools:
-          description: An array of always exactly 2 items, one per tool in the flow configuration. Order is undefined.
-          type: array
-          minItems: 2
-          maxItems: 2
-          items:
-            $ref: '#/components/schemas/ToolInFlow'
-          example:
-          - name: ToolX
-            itemType: Task
-            externalContainerId: string
-            canCreateItems: true
-            canUpdateItems: true
-          - name: ToolY
-            itemType: Issue
-            externalContainerId: string
-            canCreateItems: false
-            canUpdateItems: false
-    PaginatedResult:
-      description: A paginated result
-      type: object
-      properties:
-        total:
-          type: number
-        pageSize:
-          type: number
-        hasNextPage:
-          type: boolean
   parameters:
+    ReportTypeParam:
+      in: path
+      name: reportType
+      description: The identifier of the embed
+      required: true
+      schema:
+        $ref: '#/components/schemas/ReportType'
+    EmbedIdParam:
+      in: path
+      name: embedId
+      description: The identifier of the embed
+      required: true
+      schema:
+        type: string
     PaginationParam:
       in: query
       name: pagination
@@ -311,20 +325,6 @@ components:
             default: 1000
             minimum: 0
             maximum: 10000
-    ReportTypeParam:
-      in: path
-      name: reportType
-      description: The identifier of the embed
-      required: true
-      schema:
-        $ref: '#/components/schemas/ReportType'
-    EmbedIdParam:
-      in: path
-      name: embedId
-      description: The identifier of the embed
-      required: true
-      schema:
-        type: string
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
