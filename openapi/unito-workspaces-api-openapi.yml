@@ -114,20 +114,62 @@ paths:
       operationId: putEmbedsByEmbedIdWorkspacesByExternalWorkspaceId
       x-operation-id-source: derived
 components:
+  responses:
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '401':
+      description: 'Unauthorized: API key is missing or invalid'
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '422':
+      description: Unprocessable Entity
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '429':
+      description: Too Many Requests
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Workspace:
+      description: A workspace
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Workspace'
+    AllWorkspaces:
+      description: All workspaces
+      content:
+        application/json:
+          schema:
+            type: object
+            required:
+            - total
+            - data
+            properties:
+              total:
+                description: The number of workspaces associated to the embed.
+                type: number
+              data:
+                description: An array containing a detailed view of all the worksapces associated to the embed.
+                type: array
+                items:
+                  $ref: '#/components/schemas/Workspace'
   schemas:
-    WorkspaceExternalData:
-      description: A set of name-value pairs needed by Unito as per agreement, typically for billing purposes.
-      type: object
-      additionalProperties: true
-      example:
-        sku: example-product-sku
-    WorkspaceExternalStatus:
-      description: Determines whether the worskpace is accessible and syncing data.
-      type: string
-      enum:
-      - active
-      - trialing
-      - disabled
     Workspace:
       description: A workspace
       type: object
@@ -152,6 +194,13 @@ components:
           $ref: '#/components/schemas/WorkspaceExternalStatus'
         externalData:
           $ref: '#/components/schemas/WorkspaceExternalData'
+    WorkspaceExternalStatus:
+      description: Determines whether the worskpace is accessible and syncing data.
+      type: string
+      enum:
+      - active
+      - trialing
+      - disabled
     Error:
       description: An error is returned from the API when a request fails to execute.
       type: object
@@ -165,61 +214,12 @@ components:
           description: The details of the error.
           type: object
           additionalProperties: true
-  responses:
-    '500':
-      description: Internal Server Error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    '401':
-      description: 'Unauthorized: API key is missing or invalid'
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Workspace:
-      description: A workspace
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Workspace'
-    '422':
-      description: Unprocessable Entity
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    '404':
-      description: Not Found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    '429':
-      description: Too Many Requests
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    AllWorkspaces:
-      description: All workspaces
-      content:
-        application/json:
-          schema:
-            type: object
-            required:
-            - total
-            - data
-            properties:
-              total:
-                description: The number of workspaces associated to the embed.
-                type: number
-              data:
-                description: An array containing a detailed view of all the worksapces associated to the embed.
-                type: array
-                items:
-                  $ref: '#/components/schemas/Workspace'
+    WorkspaceExternalData:
+      description: A set of name-value pairs needed by Unito as per agreement, typically for billing purposes.
+      type: object
+      additionalProperties: true
+      example:
+        sku: example-product-sku
   parameters:
     ExternalWorkspaceIdParam:
       in: path

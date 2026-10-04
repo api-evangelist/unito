@@ -51,73 +51,51 @@ paths:
       operationId: getEmbedsByEmbedIdReportsByReportType
       x-operation-id-source: derived
 components:
-  parameters:
-    ReportTypeParam:
-      in: path
-      name: reportType
-      description: The identifier of the embed
-      required: true
-      schema:
-        $ref: '#/components/schemas/ReportType'
-    EmbedIdParam:
-      in: path
-      name: embedId
-      description: The identifier of the embed
-      required: true
-      schema:
-        type: string
-    PaginationParam:
-      in: query
-      name: pagination
-      description: Details to paginate the results.
-      required: false
-      schema:
-        type: object
-        additionalProperties: false
-        properties:
-          offset:
-            type: integer
-            description: Number of 'first results' to skip
-            default: 0
-            minimum: 0
-            maximum: 1000000000
-          limit:
-            type: integer
-            description: Maximum number of results after the offset
-            default: 1000
-            minimum: 0
-            maximum: 10000
+  responses:
+    '500':
+      description: Internal Server Error
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '404':
+      description: Not Found
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '429':
+      description: Too Many Requests
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    '401':
+      description: 'Unauthorized: API key is missing or invalid'
+      content:
+        application/json:
+          schema:
+            $ref: '#/components/schemas/Error'
+    Report:
+      description: 'The usage report for either: - all workspaces created from your embed. - each individual flow created within all workspaces of your embed'
+      content:
+        application/json:
+          schema:
+            allOf:
+            - $ref: '#/components/schemas/PaginatedResult'
+            - description: A lisf of reports on flows.
+              type: object
+              required:
+              - data
+              properties:
+                data:
+                  description: The reports.
+                  type: array
+                  items:
+                    anyOf:
+                    - $ref: '#/components/schemas/WorkspaceUsage'
+                    - $ref: '#/components/schemas/FlowUsage'
   schemas:
-    ToolInFlow:
-      type: object
-      required:
-      - externalContainerId
-      - canCreateItems
-      - canUpdateItems
-      properties:
-        name:
-          type: string
-        itemType:
-          type: string
-          description: What kind of item is being synced. E.g. a task, card, contact, opportunity, row, etc.
-        externalContainerId:
-          type: string
-        canCreateItems:
-          type: boolean
-          description: whether the flow can create new items of itemType in externalContainerId
-        canUpdateItems:
-          type: boolean
-          description: whether the flow can update existing items of itemType in externalContainerId
-    PaginatedResult:
-      description: A paginated result
-      type: object
-      properties:
-        total:
-          type: number
-        pageSize:
-          type: number
-        hasNextPage:
-          type: boolean
     WorkspaceUsage:
       type: object
       required:
@@ -201,6 +179,42 @@ components:
               changesSyncedLast30d: 0
               flowsCount: 0
               flowsEverCreatedCount: 0
+    ToolInFlow:
+      type: object
+      required:
+      - externalContainerId
+      - canCreateItems
+      - canUpdateItems
+      properties:
+        name:
+          type: string
+        itemType:
+          type: string
+          description: What kind of item is being synced. E.g. a task, card, contact, opportunity, row, etc.
+        externalContainerId:
+          type: string
+        canCreateItems:
+          type: boolean
+          description: whether the flow can create new items of itemType in externalContainerId
+        canUpdateItems:
+          type: boolean
+          description: whether the flow can update existing items of itemType in externalContainerId
+    ReportType:
+      description: What are the available report types an embed can query for ?
+      type: string
+      enum:
+      - flows-usage
+      - workspaces-usage
+    PaginatedResult:
+      description: A paginated result
+      type: object
+      properties:
+        total:
+          type: number
+        pageSize:
+          type: number
+        hasNextPage:
+          type: boolean
     FlowUsage:
       type: object
       required:
@@ -275,56 +289,42 @@ components:
           description: The details of the error.
           type: object
           additionalProperties: true
-    ReportType:
-      description: What are the available report types an embed can query for ?
-      type: string
-      enum:
-      - flows-usage
-      - workspaces-usage
-  responses:
-    '500':
-      description: Internal Server Error
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    '401':
-      description: 'Unauthorized: API key is missing or invalid'
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    '404':
-      description: Not Found
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    '429':
-      description: Too Many Requests
-      content:
-        application/json:
-          schema:
-            $ref: '#/components/schemas/Error'
-    Report:
-      description: 'The usage report for either: - all workspaces created from your embed. - each individual flow created within all workspaces of your embed'
-      content:
-        application/json:
-          schema:
-            allOf:
-            - $ref: '#/components/schemas/PaginatedResult'
-            - description: A lisf of reports on flows.
-              type: object
-              required:
-              - data
-              properties:
-                data:
-                  description: The reports.
-                  type: array
-                  items:
-                    anyOf:
-                    - $ref: '#/components/schemas/WorkspaceUsage'
-                    - $ref: '#/components/schemas/FlowUsage'
+  parameters:
+    ReportTypeParam:
+      in: path
+      name: reportType
+      description: The identifier of the embed
+      required: true
+      schema:
+        $ref: '#/components/schemas/ReportType'
+    EmbedIdParam:
+      in: path
+      name: embedId
+      description: The identifier of the embed
+      required: true
+      schema:
+        type: string
+    PaginationParam:
+      in: query
+      name: pagination
+      description: Details to paginate the results.
+      required: false
+      schema:
+        type: object
+        additionalProperties: false
+        properties:
+          offset:
+            type: integer
+            description: Number of 'first results' to skip
+            default: 0
+            minimum: 0
+            maximum: 1000000000
+          limit:
+            type: integer
+            description: Maximum number of results after the offset
+            default: 1000
+            minimum: 0
+            maximum: 10000
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
