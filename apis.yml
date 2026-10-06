@@ -49,7 +49,7 @@ x-enrichment:
   artifacts_added: 22
   pass: local-v1
 created: '2026-07-17'
-modified: '2026-07-21'
+modified: '2026-10-06'
 tags:
 - Integration
 - Two-Way Sync
@@ -121,6 +121,8 @@ maintainers:
 - FN: APIs.json
   email: info@apis.io
 common:
+- url: https://unito.io/blog/feed/
+  type: BlogRSS
 - type: Overlay
   url: overlays/unito-embeds-overlay.yaml
 - type: AgenticAccess
