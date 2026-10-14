@@ -1,0 +1,49 @@
+generated: '2026-10-14'
+method: searched
+checked:
+- https://github.com/marketplace?type=apps
+- https://marketplace.atlassian.com/
+marketplace_apps: []
+edges:
+- partner_name: GitHub Marketplace (apps)
+  partner: github
+  partner_match: aggregator
+  type: marketplace
+  marketplace: github-apps
+  channel: partner-built
+  relationship: platform-app
+  direction: third-party
+  evidence: https://github.com/marketplace/2-way-sync-by-unito
+  listing_count: 4
+  apps:
+  - Unito Two-Way Sync for GitHub
+  - Sync GitHub with Wrike
+  - Sync GitHub with Asana
+  - Sync GitHub with Trello
+  publisher_name: unito
+  badges:
+  - Verified domain
+  detected_by: sweep-devtools.py
+  detected: '2026-10-14'
+- partner_name: Atlassian Marketplace
+  partner: atlassian
+  partner_match: aggregator
+  type: marketplace
+  marketplace: atlassian
+  channel: partner-built
+  relationship: platform-app
+  direction: third-party
+  evidence: https://marketplace.atlassian.com/vendors/1213633/unito
+  listing_count: 18
+  apps:
+  - 'Unito: Enterprise 2-Way Integrations for Jira & 60+ tools'
+  - Salesforce Integration for Rovo (Salesforce Connector)
+  - Trello 2 Way Integration for Jira
+  - Unito 2 Way Integrations for Jira
+  - Asana 2-Way Integration for Jira (Asana Connector)
+  publisher_name: Unito
+  detected_by: sweep-devtools.py
+  detected: '2026-10-14'
+source:
+- https://github.com/marketplace?type=apps
+- https://marketplace.atlassian.com/
