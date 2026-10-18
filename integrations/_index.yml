@@ -27,3 +27,42 @@
   relationship: platform-app
   status: not-a-workflow
   arazzo: null
+- slug: unito-google-workspace-own
+  label: Google Workspace (own)
+  partner: google-workspace
+  partner_name: Google Workspace (own)
+  category: Google Workspace app
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://workspace.google.com/marketplace/app/unito_spreadsheet_sync/548272798607
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: unito-monday-com-own
+  label: Monday.com (own)
+  partner: monday-com
+  partner_name: Monday.com (own)
+  category: monday.com app
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://monday.com/marketplace/listing/11
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
+- slug: unito-slack-own
+  label: Slack (own)
+  partner: slack
+  partner_name: Slack (own)
+  category: Slack app
+  type: marketplace
+  marketplace: own
+  channel: partner-built
+  evidence: https://slack.com/marketplace/A02C3EFFQAF-unito-2-way-sync
+  source: edge
+  relationship: platform-app
+  status: not-a-workflow
+  arazzo: null
