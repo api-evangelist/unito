@@ -2,8 +2,15 @@ generated: '2026-10-14'
 method: searched
 checked:
 - google-workspace/integrations/google-workspace-integration-edges.yml
+- https://api.nuget.org/v3
+- https://crates.io/api/v1
 - https://github.com/marketplace?type=apps
 - https://marketplace.atlassian.com/
+- https://proxy.golang.org
+- https://pypi.org/pypi
+- https://registry.npmjs.org
+- https://repo1.maven.org/maven2
+- https://rubygems.org/api/v1
 - monday-com/integrations/monday-com-integration-edges.yml
 - slack/integrations/slack-integration-edges.yml
 marketplace_apps: []
@@ -98,6 +105,36 @@ edges:
   detected: '2026-10-18'
   detected_by: mirror-platform-listings.py
   category: Slack app
+- partner_name: npm registry
+  partner: npm
+  partner_match: register
+  type: register
+  direction: provider-built
+  category: official SDK (JavaScript/TypeScript)
+  evidence: https://www.npmjs.com/package/backoff-decorator
+  channel: package-registry
+  relationship: distribution-channel
+  contract_reference:
+    register: npm registry (public registry JSON)
+    spec_file: null
+    language: JavaScript/TypeScript
+    packages:
+    - name: backoff-decorator
+      version: 0.1.18
+      released: '2022-04-11'
+      released_field: modified
+      lapsed: true
+      page: https://www.npmjs.com/package/backoff-decorator
+      repo_leg: github-org:unitoio
+      publisher_leg: email:unito.io
+      matched_by: domain
+    current: false
+    signal_note: 'an official package on the registry: distribution, not an integration; lapsed = no release in
+      24 months'
+    detected_by: sweep-official-sdks.py
+    detected: '2026-10-18'
+  detected_by: sweep-official-sdks.py
+  first_seen: '2026-10-18'
 source:
 - https://github.com/marketplace?type=apps
 - https://marketplace.atlassian.com/
