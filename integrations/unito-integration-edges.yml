@@ -31,6 +31,7 @@ checked:
 - https://www.techstars.com/portfolio
 - https://www.ycombinator.com/companies
 - hubspot/integrations/hubspot-integration-edges.yml
+- miro/integrations/miro-integration-edges.yml
 summary: null
 marketplace_apps: []
 edges:
@@ -212,4 +213,21 @@ edges:
   detected: '2026-10-21'
   detected_by: mirror-platform-listings.py
   category: CONNECTOR
+- partner_name: Miro (own)
+  partner: miro
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://miro.com/marketplace/unito/
+  mirror_of: miro/integrations/miro-integration-edges.yml
+  apps:
+  - Unito
+  listing_count: 1
+  detected: '2026-10-22'
+  detected_by: mirror-platform-listings.py
+  category: Miro app
 templates: []
