@@ -32,6 +32,7 @@ checked:
 - https://www.ycombinator.com/companies
 - hubspot/integrations/hubspot-integration-edges.yml
 - miro/integrations/miro-integration-edges.yml
+- intercom/integrations/intercom-integration-edges.yml
 summary: null
 marketplace_apps: []
 edges:
@@ -230,4 +231,21 @@ edges:
   detected: '2026-10-22'
   detected_by: mirror-platform-listings.py
   category: Miro app
+- partner_name: Intercom (own)
+  partner: intercom
+  partner_match: mirror
+  mirror_match: domain
+  type: marketplace
+  relationship: platform-app
+  direction: third-party
+  channel: partner-built
+  marketplace: own
+  evidence: https://www.intercom.com/app-store/?app_package_code=unito
+  mirror_of: intercom/integrations/intercom-integration-edges.yml
+  apps:
+  - Unito
+  listing_count: 1
+  detected: '2026-10-23'
+  detected_by: mirror-platform-listings.py
+  category: Automation platforms
 templates: []
