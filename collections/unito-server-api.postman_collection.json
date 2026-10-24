@@ -1,197 +1,195 @@
 {
+  "info": {
+    "_postman_id": "d7ac0e40-c69d-4f0c-ba1b-42c1a70f87e2",
+    "name": "Unito Embed Server API",
+    "description": "Welcome to Unito Embed API documentation\n\nIn order to be able to use that api, Unito must first create an embed entity for you and give you its api key.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:36:42.000Z",
+    "updatedAt": "2026-10-22T01:36:43.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-d7ac0e40-c69d-4f0c-ba1b-42c1a70f87e2"
+  },
   "item": [
     {
-      "id": "1f67b0ad-cfc9-4b1d-97d6-8a6314f581d8",
-      "name": "Server",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "health",
       "item": [
         {
-          "id": "a33757f0-477e-4c1b-8296-7a312e203754",
-          "name": "Whether the service is ready to serve requests",
-          "request": {
-            "name": "Whether the service is ready to serve requests",
-            "description": {},
-            "url": {
-              "path": [
-                "health",
-                "ready"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "ready",
+          "item": [
             {
-              "id": "20ec90b9-9667-41fb-a515-ed7ba33fc556",
-              "name": "The service is ready to receive requests",
-              "originalRequest": {
+              "name": "Whether the service is ready to serve requests",
+              "id": "067aed5b-d07c-4101-b862-920e1adba103",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
                 "url": {
-                  "path": [
-                    "health",
-                    "ready"
-                  ],
+                  "raw": "{{baseUrl}}/health/ready",
                   "host": [
                     "{{baseUrl}}"
                   ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-API-Key",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "text/plain"
-                }
-              ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
-            },
-            {
-              "id": "d5e9d664-ffb8-4aea-8fe6-1f49520fa247",
-              "name": "The service is NOT ready to receive requests",
-              "originalRequest": {
-                "url": {
                   "path": [
                     "health",
                     "ready"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-API-Key",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                  ]
+                }
               },
-              "status": "Service Unavailable",
-              "code": 503,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "id": "67c103f4-ca4a-4619-9a01-111005584f8e",
+                  "name": "The service is ready to receive requests",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-API-Key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/health/ready",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "health",
+                        "ready"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-22T01:36:43.000Z",
+                  "updatedAt": "2026-10-22T01:36:43.000Z",
+                  "uid": "35240-67c103f4-ca4a-4619-9a01-111005584f8e"
+                },
+                {
+                  "id": "d1a38206-037a-4df5-95e2-6326da336577",
+                  "name": "The service is NOT ready to receive requests",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-API-Key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/health/ready",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "health",
+                        "ready"
+                      ]
+                    }
+                  },
+                  "status": "Service Unavailable",
+                  "code": 503,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-22T01:36:43.000Z",
+                  "updatedAt": "2026-10-22T01:36:43.000Z",
+                  "uid": "35240-d1a38206-037a-4df5-95e2-6326da336577"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "createdAt": "2026-10-22T01:36:43.000Z",
+              "updatedAt": "2026-10-22T01:36:43.000Z",
+              "uid": "35240-067aed5b-d07c-4101-b862-920e1adba103"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "c0d062a4-559c-4e6d-a149-6c74a0ff35b8",
+          "createdAt": "2026-10-22T01:36:43.000Z",
+          "updatedAt": "2026-10-22T01:36:43.000Z",
+          "uid": "35240-c0d062a4-559c-4e6d-a149-6c74a0ff35b8"
         },
         {
-          "id": "a2d03d4c-17df-412a-a3a6-b43dde59704c",
-          "name": "Whether the service is responsive",
-          "request": {
-            "name": "Whether the service is responsive",
-            "description": {},
-            "url": {
-              "path": [
-                "health",
-                "alive"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": []
-            },
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "alive",
+          "item": [
             {
-              "id": "7ba040a7-0415-41f8-bac4-6fda98a8ab0b",
-              "name": "The service is alive",
-              "originalRequest": {
+              "name": "Whether the service is responsive",
+              "id": "55e3c2df-ead6-4942-81d2-75092be9aee0",
+              "protocolProfileBehavior": {
+                "disableBodyPruning": true
+              },
+              "request": {
+                "method": "GET",
+                "header": [],
                 "url": {
+                  "raw": "{{baseUrl}}/health/alive",
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
                   "path": [
                     "health",
                     "alive"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": []
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-API-Key",
-                    "value": "<API Key>"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
+                  ]
+                }
               },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "response": [
                 {
-                  "key": "Content-Type",
-                  "value": "text/plain"
+                  "id": "eb0852cd-4475-4d68-a0b0-38a170b022ad",
+                  "name": "The service is alive",
+                  "originalRequest": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "description": "Added as a part of security scheme: apikey",
+                        "key": "X-API-Key",
+                        "value": "<API Key>"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/health/alive",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "health",
+                        "alive"
+                      ]
+                    }
+                  },
+                  "status": "OK",
+                  "code": 200,
+                  "_postman_previewlanguage": "text",
+                  "header": [],
+                  "cookie": [],
+                  "responseTime": null,
+                  "body": null,
+                  "createdAt": "2026-10-22T01:36:43.000Z",
+                  "updatedAt": "2026-10-22T01:36:43.000Z",
+                  "uid": "35240-eb0852cd-4475-4d68-a0b0-38a170b022ad"
                 }
               ],
-              "body": "",
-              "cookie": [],
-              "_postman_previewlanguage": "text"
+              "createdAt": "2026-10-22T01:36:43.000Z",
+              "updatedAt": "2026-10-22T01:36:43.000Z",
+              "uid": "35240-55e3c2df-ead6-4942-81d2-75092be9aee0"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "6f2dd40d-24af-44a0-b613-d71a1081718a",
+          "createdAt": "2026-10-22T01:36:43.000Z",
+          "updatedAt": "2026-10-22T01:36:43.000Z",
+          "uid": "35240-6f2dd40d-24af-44a0-b613-d71a1081718a"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "http://localhost:9080",
-      "key": "baseUrl"
+      "id": "010324f2-b083-42c5-94c7-067ac76d8f94",
+      "createdAt": "2026-10-22T01:36:43.000Z",
+      "updatedAt": "2026-10-22T01:36:43.000Z",
+      "uid": "35240-010324f2-b083-42c5-94c7-067ac76d8f94"
     }
   ],
   "auth": {
@@ -199,25 +197,25 @@
     "apikey": [
       {
         "key": "key",
-        "value": "X-API-Key"
+        "value": "X-API-Key",
+        "type": "string"
       },
       {
         "key": "value",
-        "value": "{{apiKey}}"
+        "value": "{{apiKey}}",
+        "type": "string"
       },
       {
         "key": "in",
-        "value": "header"
+        "value": "header",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "73af1a55-b6a7-41db-862b-cf0e5b7fc7fc",
-    "name": "Unito Embed Reports Server API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "<h2>Welcome to Unito Embed API documentation</h2> <p>In order to be able to use that api, Unito must first create an embed entity for you and give you its api key. <br>Once you have access to an embed, there are 2 main resources for  you to interact with </p> <p> <b>Workspaces - </b> Allow you to give us information about the entity (workspaces, organization, group, ... ) that the user accessing the embed belongs to. <br> Its unique identifier <i>externalWorkspaceId</i> is the value that you pass in the iframe URL. <br> The information provided regarding the status of that entity will allow us to keep up to date the status of the Unito's workspace subscription. </p>\n<p> <b>Reports - </b> You can select froma list of pre-made reports that our data team has been building in order to help you better understand how your users benefit from Unito, how many flows did they create, with which other tools did they connect and how big is their usage (changes synced, items in sync, ... ) </p>",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:9080"
     }
-  }
+  ]
 }

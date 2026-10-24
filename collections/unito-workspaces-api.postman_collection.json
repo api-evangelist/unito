@@ -1,1285 +1,1215 @@
 {
+  "info": {
+    "_postman_id": "c6ca1da4-d006-49d7-bc75-273749e66af4",
+    "name": "Unito Embed Workspaces API",
+    "description": "Welcome to Unito Embed API documentation\n\nIn order to be able to use that api, Unito must first create an embed entity for you and give you its api key.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "createdAt": "2026-10-22T01:36:50.000Z",
+    "updatedAt": "2026-10-22T01:36:50.000Z",
+    "lastUpdatedBy": "35240",
+    "uid": "35240-c6ca1da4-d006-49d7-bc75-273749e66af4"
+  },
   "item": [
     {
-      "id": "7be73d05-7370-4e07-bcbd-57b93d3a20dd",
-      "name": "Workspaces",
-      "description": {
-        "content": "",
-        "type": "text/plain"
-      },
+      "name": "embeds",
       "item": [
         {
-          "id": "d372a0bd-bdce-42fb-b5f7-9cfb04489284",
-          "name": "List all workspaces",
-          "request": {
-            "name": "List all workspaces",
-            "description": {
-              "content": "TBD",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "embeds",
-                ":embedId",
-                "workspaces"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "embedId",
-                  "description": "(Required) The identifier of the embed"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
+          "name": "{embedId}",
+          "item": [
             {
-              "id": "1a17bfe2-06bd-489d-b9bc-7d918f640549",
-              "name": "All workspaces",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "embeds",
-                    ":embedId",
-                    "workspaces"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "embedId",
-                      "description": "(Required) The identifier of the embed"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-API-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
+              "name": "workspaces",
+              "item": [
                 {
-                  "key": "Content-Type",
-                  "value": "application/json"
+                  "name": "{externalWorkspaceId}",
+                  "item": [
+                    {
+                      "name": "Get a workspace",
+                      "id": "8d6d1307-d3ce-4cec-a3d2-30c20c00e8d4",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/embeds/:embedId/workspaces/:externalWorkspaceId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "embeds",
+                            ":embedId",
+                            "workspaces",
+                            ":externalWorkspaceId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "5fe88910-5f0d-448b-bda8-6a25ec2b6ab3",
+                              "key": "embedId",
+                              "value": "<string>",
+                              "description": "(Required) The identifier of the embed"
+                            },
+                            {
+                              "id": "a557583e-401a-4096-bcf4-f5fecfff72ab",
+                              "key": "externalWorkspaceId",
+                              "value": "<string>",
+                              "description": "(Required) A native unique identifier for the account, organization or group that the user accessing the embed belongs to. Must match the workspace_id_ext passed in the iframe URL"
+                            }
+                          ]
+                        },
+                        "description": "TBD"
+                      },
+                      "response": [
+                        {
+                          "id": "15519f35-d164-4647-9a75-734b4ed1d3c3",
+                          "name": "A workspace",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "X-API-Key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/embeds/:embedId/workspaces/:externalWorkspaceId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "embeds",
+                                ":embedId",
+                                "workspaces",
+                                ":externalWorkspaceId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "embedId"
+                                },
+                                {
+                                  "key": "externalWorkspaceId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<number>\",\n  \"externalWorkspaceId\": \"<string>\",\n  \"externalStatus\": \"trialing\",\n  \"externalData\": {\n    \"dolore64\": false,\n    \"cillum_55\": true\n  }\n}",
+                          "createdAt": "2026-10-22T01:36:50.000Z",
+                          "updatedAt": "2026-10-22T01:36:50.000Z",
+                          "uid": "35240-15519f35-d164-4647-9a75-734b4ed1d3c3"
+                        },
+                        {
+                          "id": "96207c39-e29a-4d88-952e-63aaf718cf75",
+                          "name": "Unauthorized: API key is missing or invalid",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "X-API-Key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/embeds/:embedId/workspaces/:externalWorkspaceId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "embeds",
+                                ":embedId",
+                                "workspaces",
+                                ":externalWorkspaceId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "embedId"
+                                },
+                                {
+                                  "key": "externalWorkspaceId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"fugiat_a53\": true\n  }\n}",
+                          "createdAt": "2026-10-22T01:36:50.000Z",
+                          "updatedAt": "2026-10-22T01:36:50.000Z",
+                          "uid": "35240-96207c39-e29a-4d88-952e-63aaf718cf75"
+                        },
+                        {
+                          "id": "65d26ece-58bf-40c8-81ed-f306d7e74b71",
+                          "name": "Not Found",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "X-API-Key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/embeds/:embedId/workspaces/:externalWorkspaceId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "embeds",
+                                ":embedId",
+                                "workspaces",
+                                ":externalWorkspaceId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "embedId"
+                                },
+                                {
+                                  "key": "externalWorkspaceId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"fugiat_a53\": true\n  }\n}",
+                          "createdAt": "2026-10-22T01:36:50.000Z",
+                          "updatedAt": "2026-10-22T01:36:50.000Z",
+                          "uid": "35240-65d26ece-58bf-40c8-81ed-f306d7e74b71"
+                        },
+                        {
+                          "id": "de92669b-cdcb-4a9b-b117-9f5d33638314",
+                          "name": "Unprocessable Entity",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "X-API-Key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/embeds/:embedId/workspaces/:externalWorkspaceId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "embeds",
+                                ":embedId",
+                                "workspaces",
+                                ":externalWorkspaceId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "embedId"
+                                },
+                                {
+                                  "key": "externalWorkspaceId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                          "code": 422,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"fugiat_a53\": true\n  }\n}",
+                          "createdAt": "2026-10-22T01:36:50.000Z",
+                          "updatedAt": "2026-10-22T01:36:50.000Z",
+                          "uid": "35240-de92669b-cdcb-4a9b-b117-9f5d33638314"
+                        },
+                        {
+                          "id": "536ba8cc-c8e1-4382-b3ce-c48e2e5172c7",
+                          "name": "Too Many Requests",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "X-API-Key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/embeds/:embedId/workspaces/:externalWorkspaceId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "embeds",
+                                ":embedId",
+                                "workspaces",
+                                ":externalWorkspaceId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "embedId"
+                                },
+                                {
+                                  "key": "externalWorkspaceId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"fugiat_a53\": true\n  }\n}",
+                          "createdAt": "2026-10-22T01:36:50.000Z",
+                          "updatedAt": "2026-10-22T01:36:50.000Z",
+                          "uid": "35240-536ba8cc-c8e1-4382-b3ce-c48e2e5172c7"
+                        },
+                        {
+                          "id": "c85a6684-c2cf-4047-a237-55909cbc431e",
+                          "name": "Internal Server Error",
+                          "originalRequest": {
+                            "method": "GET",
+                            "header": [
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "X-API-Key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "url": {
+                              "raw": "{{baseUrl}}/embeds/:embedId/workspaces/:externalWorkspaceId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "embeds",
+                                ":embedId",
+                                "workspaces",
+                                ":externalWorkspaceId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "embedId"
+                                },
+                                {
+                                  "key": "externalWorkspaceId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"fugiat_a53\": true\n  }\n}",
+                          "createdAt": "2026-10-22T01:36:50.000Z",
+                          "updatedAt": "2026-10-22T01:36:50.000Z",
+                          "uid": "35240-c85a6684-c2cf-4047-a237-55909cbc431e"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T01:36:50.000Z",
+                      "updatedAt": "2026-10-22T01:36:50.000Z",
+                      "uid": "35240-8d6d1307-d3ce-4cec-a3d2-30c20c00e8d4"
+                    },
+                    {
+                      "name": "Create or replace a workspace",
+                      "id": "52541adf-9600-41fa-8a71-7311a21388ca",
+                      "protocolProfileBehavior": {
+                        "disableBodyPruning": true
+                      },
+                      "request": {
+                        "method": "PUT",
+                        "header": [
+                          {
+                            "key": "Content-Type",
+                            "value": "application/json"
+                          },
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          }
+                        ],
+                        "body": {
+                          "mode": "raw",
+                          "raw": "{\n  \"externalStatus\": \"disabled\",\n  \"externalData\": {\n    \"Ut_de\": true\n  }\n}",
+                          "options": {
+                            "raw": {
+                              "headerFamily": "json",
+                              "language": "json"
+                            }
+                          }
+                        },
+                        "url": {
+                          "raw": "{{baseUrl}}/embeds/:embedId/workspaces/:externalWorkspaceId",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "embeds",
+                            ":embedId",
+                            "workspaces",
+                            ":externalWorkspaceId"
+                          ],
+                          "variable": [
+                            {
+                              "id": "154c12ea-b41d-4834-9fa7-aa2fd0ae747b",
+                              "key": "embedId",
+                              "value": "<string>",
+                              "description": "(Required) The identifier of the embed"
+                            },
+                            {
+                              "id": "db8320a6-cb8b-49df-a8a7-1936bd94386f",
+                              "key": "externalWorkspaceId",
+                              "value": "<string>",
+                              "description": "(Required) A native unique identifier for the account, organization or group that the user accessing the embed belongs to. Must match the workspace_id_ext passed in the iframe URL"
+                            }
+                          ]
+                        },
+                        "description": "Create or replace a workspace to control its access by users and provide metadata about the workspace to Unito.\nIf there is no matching workspace, one will be created. If a matching workspace exists, it will be replaced. Therefore it is important to always provide the full set of properties and metadata on each call.\nIt is possible to create workspaces using this endpoint before any user accesses the workspace through an embed. Until the workspace is first accessed by a user, the workspace will not be returned by any usage reports endpoints."
+                      },
+                      "response": [
+                        {
+                          "id": "d5d82bdb-76ea-4fde-9718-c7d05706e97d",
+                          "name": "A workspace",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "X-API-Key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"externalStatus\": \"disabled\",\n  \"externalData\": {\n    \"Ut_de\": true\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/embeds/:embedId/workspaces/:externalWorkspaceId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "embeds",
+                                ":embedId",
+                                "workspaces",
+                                ":externalWorkspaceId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "embedId"
+                                },
+                                {
+                                  "key": "externalWorkspaceId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "OK",
+                          "code": 200,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"id\": \"<number>\",\n  \"externalWorkspaceId\": \"<string>\",\n  \"externalStatus\": \"trialing\",\n  \"externalData\": {\n    \"dolore64\": false,\n    \"cillum_55\": true\n  }\n}",
+                          "createdAt": "2026-10-22T01:36:50.000Z",
+                          "updatedAt": "2026-10-22T01:36:50.000Z",
+                          "uid": "35240-d5d82bdb-76ea-4fde-9718-c7d05706e97d"
+                        },
+                        {
+                          "id": "3a13b623-48d4-4495-85ad-9b31abd91874",
+                          "name": "Unauthorized: API key is missing or invalid",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "X-API-Key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"externalStatus\": \"disabled\",\n  \"externalData\": {\n    \"Ut_de\": true\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/embeds/:embedId/workspaces/:externalWorkspaceId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "embeds",
+                                ":embedId",
+                                "workspaces",
+                                ":externalWorkspaceId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "embedId"
+                                },
+                                {
+                                  "key": "externalWorkspaceId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unauthorized",
+                          "code": 401,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"fugiat_a53\": true\n  }\n}",
+                          "createdAt": "2026-10-22T01:36:50.000Z",
+                          "updatedAt": "2026-10-22T01:36:50.000Z",
+                          "uid": "35240-3a13b623-48d4-4495-85ad-9b31abd91874"
+                        },
+                        {
+                          "id": "bf0a3b99-8581-4559-94bc-e078c3a85952",
+                          "name": "Not Found",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "X-API-Key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"externalStatus\": \"disabled\",\n  \"externalData\": {\n    \"Ut_de\": true\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/embeds/:embedId/workspaces/:externalWorkspaceId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "embeds",
+                                ":embedId",
+                                "workspaces",
+                                ":externalWorkspaceId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "embedId"
+                                },
+                                {
+                                  "key": "externalWorkspaceId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Not Found",
+                          "code": 404,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"fugiat_a53\": true\n  }\n}",
+                          "createdAt": "2026-10-22T01:36:50.000Z",
+                          "updatedAt": "2026-10-22T01:36:50.000Z",
+                          "uid": "35240-bf0a3b99-8581-4559-94bc-e078c3a85952"
+                        },
+                        {
+                          "id": "65bc0349-668b-429a-9336-da982a2b2ed4",
+                          "name": "Unprocessable Entity",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "X-API-Key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"externalStatus\": \"disabled\",\n  \"externalData\": {\n    \"Ut_de\": true\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/embeds/:embedId/workspaces/:externalWorkspaceId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "embeds",
+                                ":embedId",
+                                "workspaces",
+                                ":externalWorkspaceId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "embedId"
+                                },
+                                {
+                                  "key": "externalWorkspaceId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                          "code": 422,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"fugiat_a53\": true\n  }\n}",
+                          "createdAt": "2026-10-22T01:36:50.000Z",
+                          "updatedAt": "2026-10-22T01:36:50.000Z",
+                          "uid": "35240-65bc0349-668b-429a-9336-da982a2b2ed4"
+                        },
+                        {
+                          "id": "65b90f88-6f33-4ddd-8a47-3d2bae0a8e40",
+                          "name": "Too Many Requests",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "X-API-Key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"externalStatus\": \"disabled\",\n  \"externalData\": {\n    \"Ut_de\": true\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/embeds/:embedId/workspaces/:externalWorkspaceId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "embeds",
+                                ":embedId",
+                                "workspaces",
+                                ":externalWorkspaceId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "embedId"
+                                },
+                                {
+                                  "key": "externalWorkspaceId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Too Many Requests",
+                          "code": 429,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"fugiat_a53\": true\n  }\n}",
+                          "createdAt": "2026-10-22T01:36:50.000Z",
+                          "updatedAt": "2026-10-22T01:36:50.000Z",
+                          "uid": "35240-65b90f88-6f33-4ddd-8a47-3d2bae0a8e40"
+                        },
+                        {
+                          "id": "b180f265-749b-48c0-b123-b0d7149f786f",
+                          "name": "Internal Server Error",
+                          "originalRequest": {
+                            "method": "PUT",
+                            "header": [
+                              {
+                                "key": "Content-Type",
+                                "value": "application/json"
+                              },
+                              {
+                                "key": "Accept",
+                                "value": "application/json"
+                              },
+                              {
+                                "description": "Added as a part of security scheme: apikey",
+                                "key": "X-API-Key",
+                                "value": "<API Key>"
+                              }
+                            ],
+                            "body": {
+                              "mode": "raw",
+                              "raw": "{\n  \"externalStatus\": \"disabled\",\n  \"externalData\": {\n    \"Ut_de\": true\n  }\n}",
+                              "options": {
+                                "raw": {
+                                  "headerFamily": "json",
+                                  "language": "json"
+                                }
+                              }
+                            },
+                            "url": {
+                              "raw": "{{baseUrl}}/embeds/:embedId/workspaces/:externalWorkspaceId",
+                              "host": [
+                                "{{baseUrl}}"
+                              ],
+                              "path": [
+                                "embeds",
+                                ":embedId",
+                                "workspaces",
+                                ":externalWorkspaceId"
+                              ],
+                              "variable": [
+                                {
+                                  "key": "embedId"
+                                },
+                                {
+                                  "key": "externalWorkspaceId"
+                                }
+                              ]
+                            }
+                          },
+                          "status": "Internal Server Error",
+                          "code": 500,
+                          "_postman_previewlanguage": "json",
+                          "header": [
+                            {
+                              "key": "Content-Type",
+                              "value": "application/json"
+                            }
+                          ],
+                          "cookie": [],
+                          "responseTime": null,
+                          "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"fugiat_a53\": true\n  }\n}",
+                          "createdAt": "2026-10-22T01:36:50.000Z",
+                          "updatedAt": "2026-10-22T01:36:50.000Z",
+                          "uid": "35240-b180f265-749b-48c0-b123-b0d7149f786f"
+                        }
+                      ],
+                      "createdAt": "2026-10-22T01:36:50.000Z",
+                      "updatedAt": "2026-10-22T01:36:50.000Z",
+                      "uid": "35240-52541adf-9600-41fa-8a71-7311a21388ca"
+                    }
+                  ],
+                  "id": "1c18b742-b4d9-4185-9868-543ffe655784",
+                  "createdAt": "2026-10-22T01:36:50.000Z",
+                  "updatedAt": "2026-10-22T01:36:50.000Z",
+                  "uid": "35240-1c18b742-b4d9-4185-9868-543ffe655784"
+                },
+                {
+                  "name": "List all workspaces",
+                  "id": "45145ac5-26ce-4f35-afe1-94476ca30782",
+                  "protocolProfileBehavior": {
+                    "disableBodyPruning": true
+                  },
+                  "request": {
+                    "method": "GET",
+                    "header": [
+                      {
+                        "key": "Accept",
+                        "value": "application/json"
+                      }
+                    ],
+                    "url": {
+                      "raw": "{{baseUrl}}/embeds/:embedId/workspaces",
+                      "host": [
+                        "{{baseUrl}}"
+                      ],
+                      "path": [
+                        "embeds",
+                        ":embedId",
+                        "workspaces"
+                      ],
+                      "variable": [
+                        {
+                          "id": "fb143144-dc09-47c8-892c-087be73c0469",
+                          "key": "embedId",
+                          "value": "<string>",
+                          "description": "(Required) The identifier of the embed"
+                        }
+                      ]
+                    },
+                    "description": "TBD"
+                  },
+                  "response": [
+                    {
+                      "id": "1490f3ad-8421-47ac-b904-66cc2e650e0f",
+                      "name": "All workspaces",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-API-Key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/embeds/:embedId/workspaces",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "embeds",
+                            ":embedId",
+                            "workspaces"
+                          ],
+                          "variable": [
+                            {
+                              "key": "embedId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "OK",
+                      "code": 200,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"total\": \"<number>\",\n  \"data\": [\n    {\n      \"id\": \"<number>\",\n      \"externalWorkspaceId\": \"<string>\",\n      \"externalStatus\": \"trialing\",\n      \"externalData\": {\n        \"reprehenderit8\": true,\n        \"ex_b00\": \"aliquip consectetur esse\",\n        \"aute4b0\": -24003836.332402527\n      }\n    },\n    {\n      \"id\": \"<number>\",\n      \"externalWorkspaceId\": \"<string>\",\n      \"externalStatus\": \"disabled\",\n      \"externalData\": {\n        \"consectetur0\": -30808026,\n        \"anim_15c\": 42675940.46248323\n      }\n    }\n  ]\n}",
+                      "createdAt": "2026-10-22T01:36:50.000Z",
+                      "updatedAt": "2026-10-22T01:36:50.000Z",
+                      "uid": "35240-1490f3ad-8421-47ac-b904-66cc2e650e0f"
+                    },
+                    {
+                      "id": "a9ed0810-2585-4e49-937b-0fa477c6dfcb",
+                      "name": "Unauthorized: API key is missing or invalid",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-API-Key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/embeds/:embedId/workspaces",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "embeds",
+                            ":embedId",
+                            "workspaces"
+                          ],
+                          "variable": [
+                            {
+                              "key": "embedId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unauthorized",
+                      "code": 401,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"fugiat_a53\": true\n  }\n}",
+                      "createdAt": "2026-10-22T01:36:50.000Z",
+                      "updatedAt": "2026-10-22T01:36:50.000Z",
+                      "uid": "35240-a9ed0810-2585-4e49-937b-0fa477c6dfcb"
+                    },
+                    {
+                      "id": "db93d1e9-ba1b-4a94-84e2-ec21b34ac1ca",
+                      "name": "Not Found",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-API-Key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/embeds/:embedId/workspaces",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "embeds",
+                            ":embedId",
+                            "workspaces"
+                          ],
+                          "variable": [
+                            {
+                              "key": "embedId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Not Found",
+                      "code": 404,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"fugiat_a53\": true\n  }\n}",
+                      "createdAt": "2026-10-22T01:36:50.000Z",
+                      "updatedAt": "2026-10-22T01:36:50.000Z",
+                      "uid": "35240-db93d1e9-ba1b-4a94-84e2-ec21b34ac1ca"
+                    },
+                    {
+                      "id": "1b6a0ec5-7e5c-4a6c-bc63-d1aefcf54359",
+                      "name": "Unprocessable Entity",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-API-Key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/embeds/:embedId/workspaces",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "embeds",
+                            ":embedId",
+                            "workspaces"
+                          ],
+                          "variable": [
+                            {
+                              "key": "embedId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+                      "code": 422,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"fugiat_a53\": true\n  }\n}",
+                      "createdAt": "2026-10-22T01:36:50.000Z",
+                      "updatedAt": "2026-10-22T01:36:50.000Z",
+                      "uid": "35240-1b6a0ec5-7e5c-4a6c-bc63-d1aefcf54359"
+                    },
+                    {
+                      "id": "2955eda7-3af4-46c0-8434-3011c0a944d8",
+                      "name": "Too Many Requests",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-API-Key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/embeds/:embedId/workspaces",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "embeds",
+                            ":embedId",
+                            "workspaces"
+                          ],
+                          "variable": [
+                            {
+                              "key": "embedId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Too Many Requests",
+                      "code": 429,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"fugiat_a53\": true\n  }\n}",
+                      "createdAt": "2026-10-22T01:36:50.000Z",
+                      "updatedAt": "2026-10-22T01:36:50.000Z",
+                      "uid": "35240-2955eda7-3af4-46c0-8434-3011c0a944d8"
+                    },
+                    {
+                      "id": "09c2d08b-4939-4bca-a310-60346cee4654",
+                      "name": "Internal Server Error",
+                      "originalRequest": {
+                        "method": "GET",
+                        "header": [
+                          {
+                            "key": "Accept",
+                            "value": "application/json"
+                          },
+                          {
+                            "description": "Added as a part of security scheme: apikey",
+                            "key": "X-API-Key",
+                            "value": "<API Key>"
+                          }
+                        ],
+                        "url": {
+                          "raw": "{{baseUrl}}/embeds/:embedId/workspaces",
+                          "host": [
+                            "{{baseUrl}}"
+                          ],
+                          "path": [
+                            "embeds",
+                            ":embedId",
+                            "workspaces"
+                          ],
+                          "variable": [
+                            {
+                              "key": "embedId"
+                            }
+                          ]
+                        }
+                      },
+                      "status": "Internal Server Error",
+                      "code": 500,
+                      "_postman_previewlanguage": "json",
+                      "header": [
+                        {
+                          "key": "Content-Type",
+                          "value": "application/json"
+                        }
+                      ],
+                      "cookie": [],
+                      "responseTime": null,
+                      "body": "{\n  \"message\": \"<string>\",\n  \"details\": {\n    \"fugiat_a53\": true\n  }\n}",
+                      "createdAt": "2026-10-22T01:36:50.000Z",
+                      "updatedAt": "2026-10-22T01:36:50.000Z",
+                      "uid": "35240-09c2d08b-4939-4bca-a310-60346cee4654"
+                    }
+                  ],
+                  "createdAt": "2026-10-22T01:36:50.000Z",
+                  "updatedAt": "2026-10-22T01:36:50.000Z",
+                  "uid": "35240-45145ac5-26ce-4f35-afe1-94476ca30782"
                 }
               ],
-              "body": "{\n  \"total\": 6754.332677335983,\n  \"data\": [\n    {\n      \"id\": 6202.837797923468,\n      \"externalWorkspaceId\": \"string\",\n      \"externalStatus\": \"active\",\n      \"externalData\": {\n        \"sku\": \"example-product-sku\"\n      }\n    },\n    {\n      \"id\": 7329.4097107861035,\n      \"externalWorkspaceId\": \"string\",\n      \"externalStatus\": \"trialing\",\n      \"externalData\": {\n        \"sku\": \"example-product-sku\"\n      }\n    }\n  ]\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "e1f306cc-3b5f-4523-8ae0-5d1a5649675a",
-              "name": "Unauthorized: API key is missing or invalid",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "embeds",
-                    ":embedId",
-                    "workspaces"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "embedId",
-                      "description": "(Required) The identifier of the embed"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-API-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"message\": \"string\",\n  \"details\": {\n    \"key_0\": 5027.40689893352,\n    \"key_1\": \"string\",\n    \"key_2\": true,\n    \"key_3\": false,\n    \"key_4\": 7050\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "aab77c41-4315-4df0-b382-7304edeead17",
-              "name": "Not Found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "embeds",
-                    ":embedId",
-                    "workspaces"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "embedId",
-                      "description": "(Required) The identifier of the embed"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-API-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"message\": \"string\",\n  \"details\": {\n    \"key_0\": 5027.40689893352,\n    \"key_1\": \"string\",\n    \"key_2\": true,\n    \"key_3\": false,\n    \"key_4\": 7050\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "ead8aab7-ed83-4cb1-a52a-37a561f5bd0b",
-              "name": "Unprocessable Entity",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "embeds",
-                    ":embedId",
-                    "workspaces"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "embedId",
-                      "description": "(Required) The identifier of the embed"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-API-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"message\": \"string\",\n  \"details\": {\n    \"key_0\": 5027.40689893352,\n    \"key_1\": \"string\",\n    \"key_2\": true,\n    \"key_3\": false,\n    \"key_4\": 7050\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "18b6167d-e8e4-46d6-8c4e-4e8103924bd9",
-              "name": "Too Many Requests",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "embeds",
-                    ":embedId",
-                    "workspaces"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "embedId",
-                      "description": "(Required) The identifier of the embed"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-API-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Too Many Requests",
-              "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"message\": \"string\",\n  \"details\": {\n    \"key_0\": 5027.40689893352,\n    \"key_1\": \"string\",\n    \"key_2\": true,\n    \"key_3\": false,\n    \"key_4\": 7050\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "59600f64-162d-41e9-af9a-0b1e0ae7f9b7",
-              "name": "Internal Server Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "embeds",
-                    ":embedId",
-                    "workspaces"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "embedId",
-                      "description": "(Required) The identifier of the embed"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-API-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"message\": \"string\",\n  \"details\": {\n    \"key_0\": 5027.40689893352,\n    \"key_1\": \"string\",\n    \"key_2\": true,\n    \"key_3\": false,\n    \"key_4\": 7050\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
+              "id": "993e3541-7418-4a76-9b20-167e39e79fe1",
+              "createdAt": "2026-10-22T01:36:50.000Z",
+              "updatedAt": "2026-10-22T01:36:50.000Z",
+              "uid": "35240-993e3541-7418-4a76-9b20-167e39e79fe1"
             }
           ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "98172046-877c-4ed8-b449-4d8a10e9aeb7",
-          "name": "Get a workspace",
-          "request": {
-            "name": "Get a workspace",
-            "description": {
-              "content": "TBD",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "embeds",
-                ":embedId",
-                "workspaces",
-                ":externalWorkspaceId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "embedId",
-                  "description": "(Required) The identifier of the embed"
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "externalWorkspaceId",
-                  "description": "(Required) A native unique identifier for the account, organization or group that the user accessing the embed belongs to. Must match the workspace_id_ext passed in the iframe URL"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "GET",
-            "auth": null
-          },
-          "response": [
-            {
-              "id": "5499badc-1b92-45b3-83ea-dd388f3a6f28",
-              "name": "A workspace",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "embeds",
-                    ":embedId",
-                    "workspaces",
-                    ":externalWorkspaceId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "embedId",
-                      "description": "(Required) The identifier of the embed"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "externalWorkspaceId",
-                      "description": "(Required) A native unique identifier for the account, organization or group that the user accessing the embed belongs to. Must match the workspace_id_ext passed in the iframe URL"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-API-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": 1583.7618330675873,\n  \"externalWorkspaceId\": \"string\",\n  \"externalStatus\": \"active\",\n  \"externalData\": {\n    \"sku\": \"example-product-sku\"\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "cba175bf-abc7-49af-9759-15bd17274ab2",
-              "name": "Unauthorized: API key is missing or invalid",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "embeds",
-                    ":embedId",
-                    "workspaces",
-                    ":externalWorkspaceId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "embedId",
-                      "description": "(Required) The identifier of the embed"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "externalWorkspaceId",
-                      "description": "(Required) A native unique identifier for the account, organization or group that the user accessing the embed belongs to. Must match the workspace_id_ext passed in the iframe URL"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-API-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"message\": \"string\",\n  \"details\": {\n    \"key_0\": 5027.40689893352,\n    \"key_1\": \"string\",\n    \"key_2\": true,\n    \"key_3\": false,\n    \"key_4\": 7050\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "a9cd715c-baef-4e07-a0fc-09676b56c729",
-              "name": "Not Found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "embeds",
-                    ":embedId",
-                    "workspaces",
-                    ":externalWorkspaceId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "embedId",
-                      "description": "(Required) The identifier of the embed"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "externalWorkspaceId",
-                      "description": "(Required) A native unique identifier for the account, organization or group that the user accessing the embed belongs to. Must match the workspace_id_ext passed in the iframe URL"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-API-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"message\": \"string\",\n  \"details\": {\n    \"key_0\": 5027.40689893352,\n    \"key_1\": \"string\",\n    \"key_2\": true,\n    \"key_3\": false,\n    \"key_4\": 7050\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "9253d6df-c3cb-44bf-ab09-27e94d22a4d7",
-              "name": "Unprocessable Entity",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "embeds",
-                    ":embedId",
-                    "workspaces",
-                    ":externalWorkspaceId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "embedId",
-                      "description": "(Required) The identifier of the embed"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "externalWorkspaceId",
-                      "description": "(Required) A native unique identifier for the account, organization or group that the user accessing the embed belongs to. Must match the workspace_id_ext passed in the iframe URL"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-API-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"message\": \"string\",\n  \"details\": {\n    \"key_0\": 5027.40689893352,\n    \"key_1\": \"string\",\n    \"key_2\": true,\n    \"key_3\": false,\n    \"key_4\": 7050\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "9bd7a09c-4345-4afe-85e8-56deab48c8c8",
-              "name": "Too Many Requests",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "embeds",
-                    ":embedId",
-                    "workspaces",
-                    ":externalWorkspaceId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "embedId",
-                      "description": "(Required) The identifier of the embed"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "externalWorkspaceId",
-                      "description": "(Required) A native unique identifier for the account, organization or group that the user accessing the embed belongs to. Must match the workspace_id_ext passed in the iframe URL"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-API-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Too Many Requests",
-              "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"message\": \"string\",\n  \"details\": {\n    \"key_0\": 5027.40689893352,\n    \"key_1\": \"string\",\n    \"key_2\": true,\n    \"key_3\": false,\n    \"key_4\": 7050\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "9491b974-808d-4a75-90fa-40c0860f577a",
-              "name": "Internal Server Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "embeds",
-                    ":embedId",
-                    "workspaces",
-                    ":externalWorkspaceId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "embedId",
-                      "description": "(Required) The identifier of the embed"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "externalWorkspaceId",
-                      "description": "(Required) A native unique identifier for the account, organization or group that the user accessing the embed belongs to. Must match the workspace_id_ext passed in the iframe URL"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-API-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "GET",
-                "body": {}
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"message\": \"string\",\n  \"details\": {\n    \"key_0\": 5027.40689893352,\n    \"key_1\": \"string\",\n    \"key_2\": true,\n    \"key_3\": false,\n    \"key_4\": 7050\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
-        },
-        {
-          "id": "db905a33-76bd-4fd0-a5bc-82e8a46d01a7",
-          "name": "Create or replace a workspace",
-          "request": {
-            "name": "Create or replace a workspace",
-            "description": {
-              "content": "Create or replace a workspace to control its access by users and provide metadata about the workspace to Unito.\nIf there is no matching workspace, one will be created. If a matching workspace exists, it will be replaced. Therefore it is important to always provide the full set of properties and metadata on each call.\nIt is possible to create workspaces using this endpoint before any user accesses the workspace through an embed. Until the workspace is first accessed by a user, the workspace will not be returned by any usage reports endpoints.\n",
-              "type": "text/plain"
-            },
-            "url": {
-              "path": [
-                "embeds",
-                ":embedId",
-                "workspaces",
-                ":externalWorkspaceId"
-              ],
-              "host": [
-                "{{baseUrl}}"
-              ],
-              "query": [],
-              "variable": [
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "embedId",
-                  "description": "(Required) The identifier of the embed"
-                },
-                {
-                  "disabled": false,
-                  "type": "any",
-                  "value": "<string>",
-                  "key": "externalWorkspaceId",
-                  "description": "(Required) A native unique identifier for the account, organization or group that the user accessing the embed belongs to. Must match the workspace_id_ext passed in the iframe URL"
-                }
-              ]
-            },
-            "header": [
-              {
-                "key": "Content-Type",
-                "value": "application/json"
-              },
-              {
-                "key": "Accept",
-                "value": "application/json"
-              }
-            ],
-            "method": "PUT",
-            "auth": null,
-            "body": {
-              "mode": "raw",
-              "raw": "{\n  \"externalStatus\": \"<string>\",\n  \"externalData\": {\n    \"key_0\": true,\n    \"key_1\": \"string\",\n    \"key_2\": \"string\"\n  }\n}",
-              "options": {
-                "raw": {
-                  "language": "json"
-                }
-              }
-            }
-          },
-          "response": [
-            {
-              "id": "58f350b1-6e97-4029-86f3-3cdcacfb1bea",
-              "name": "A workspace",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "embeds",
-                    ":embedId",
-                    "workspaces",
-                    ":externalWorkspaceId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "embedId",
-                      "description": "(Required) The identifier of the embed"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "externalWorkspaceId",
-                      "description": "(Required) A native unique identifier for the account, organization or group that the user accessing the embed belongs to. Must match the workspace_id_ext passed in the iframe URL"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-API-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"externalStatus\": \"<string>\",\n  \"externalData\": {\n    \"sku\": \"example-product-sku\"\n  }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "OK",
-              "code": 200,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"id\": 530.8483190306367,\n  \"externalWorkspaceId\": \"string\",\n  \"externalStatus\": \"<string>\",\n  \"externalData\": {\n    \"sku\": \"example-product-sku\"\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "7cbbb5d0-3a71-4790-ac49-203ad58c4c14",
-              "name": "Unauthorized: API key is missing or invalid",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "embeds",
-                    ":embedId",
-                    "workspaces",
-                    ":externalWorkspaceId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "embedId",
-                      "description": "(Required) The identifier of the embed"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "externalWorkspaceId",
-                      "description": "(Required) A native unique identifier for the account, organization or group that the user accessing the embed belongs to. Must match the workspace_id_ext passed in the iframe URL"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-API-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"externalStatus\": \"<string>\",\n  \"externalData\": {\n    \"sku\": \"example-product-sku\"\n  }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unauthorized",
-              "code": 401,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"message\": \"string\",\n  \"details\": {\n    \"key_0\": 5027.40689893352,\n    \"key_1\": \"string\",\n    \"key_2\": true,\n    \"key_3\": false,\n    \"key_4\": 7050\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "7050841d-8b68-418f-a5cb-0420fa49fe5d",
-              "name": "Not Found",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "embeds",
-                    ":embedId",
-                    "workspaces",
-                    ":externalWorkspaceId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "embedId",
-                      "description": "(Required) The identifier of the embed"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "externalWorkspaceId",
-                      "description": "(Required) A native unique identifier for the account, organization or group that the user accessing the embed belongs to. Must match the workspace_id_ext passed in the iframe URL"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-API-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"externalStatus\": \"<string>\",\n  \"externalData\": {\n    \"sku\": \"example-product-sku\"\n  }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Not Found",
-              "code": 404,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"message\": \"string\",\n  \"details\": {\n    \"key_0\": 5027.40689893352,\n    \"key_1\": \"string\",\n    \"key_2\": true,\n    \"key_3\": false,\n    \"key_4\": 7050\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "acfb8753-bdd8-4ff2-976f-0e2661dd8f3d",
-              "name": "Unprocessable Entity",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "embeds",
-                    ":embedId",
-                    "workspaces",
-                    ":externalWorkspaceId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "embedId",
-                      "description": "(Required) The identifier of the embed"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "externalWorkspaceId",
-                      "description": "(Required) A native unique identifier for the account, organization or group that the user accessing the embed belongs to. Must match the workspace_id_ext passed in the iframe URL"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-API-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"externalStatus\": \"<string>\",\n  \"externalData\": {\n    \"sku\": \"example-product-sku\"\n  }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Unprocessable Entity (WebDAV) (RFC 4918)",
-              "code": 422,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"message\": \"string\",\n  \"details\": {\n    \"key_0\": 5027.40689893352,\n    \"key_1\": \"string\",\n    \"key_2\": true,\n    \"key_3\": false,\n    \"key_4\": 7050\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "22445287-6e4b-4166-9c3e-02977cc6d100",
-              "name": "Too Many Requests",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "embeds",
-                    ":embedId",
-                    "workspaces",
-                    ":externalWorkspaceId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "embedId",
-                      "description": "(Required) The identifier of the embed"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "externalWorkspaceId",
-                      "description": "(Required) A native unique identifier for the account, organization or group that the user accessing the embed belongs to. Must match the workspace_id_ext passed in the iframe URL"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-API-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"externalStatus\": \"<string>\",\n  \"externalData\": {\n    \"sku\": \"example-product-sku\"\n  }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Too Many Requests",
-              "code": 429,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"message\": \"string\",\n  \"details\": {\n    \"key_0\": 5027.40689893352,\n    \"key_1\": \"string\",\n    \"key_2\": true,\n    \"key_3\": false,\n    \"key_4\": 7050\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            },
-            {
-              "id": "ef7e224a-2818-4e4e-ab93-a86d60722b71",
-              "name": "Internal Server Error",
-              "originalRequest": {
-                "url": {
-                  "path": [
-                    "embeds",
-                    ":embedId",
-                    "workspaces",
-                    ":externalWorkspaceId"
-                  ],
-                  "host": [
-                    "{{baseUrl}}"
-                  ],
-                  "query": [],
-                  "variable": [
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "embedId",
-                      "description": "(Required) The identifier of the embed"
-                    },
-                    {
-                      "disabled": false,
-                      "type": "any",
-                      "value": "<string>",
-                      "key": "externalWorkspaceId",
-                      "description": "(Required) A native unique identifier for the account, organization or group that the user accessing the embed belongs to. Must match the workspace_id_ext passed in the iframe URL"
-                    }
-                  ]
-                },
-                "header": [
-                  {
-                    "description": {
-                      "content": "Added as a part of security scheme: apikey",
-                      "type": "text/plain"
-                    },
-                    "key": "X-API-Key",
-                    "value": "<API Key>"
-                  },
-                  {
-                    "key": "Accept",
-                    "value": "application/json"
-                  }
-                ],
-                "method": "PUT",
-                "body": {
-                  "mode": "raw",
-                  "raw": "{\n  \"externalStatus\": \"<string>\",\n  \"externalData\": {\n    \"sku\": \"example-product-sku\"\n  }\n}",
-                  "options": {
-                    "raw": {
-                      "language": "json"
-                    }
-                  }
-                }
-              },
-              "status": "Internal Server Error",
-              "code": 500,
-              "header": [
-                {
-                  "key": "Content-Type",
-                  "value": "application/json"
-                }
-              ],
-              "body": "{\n  \"message\": \"string\",\n  \"details\": {\n    \"key_0\": 5027.40689893352,\n    \"key_1\": \"string\",\n    \"key_2\": true,\n    \"key_3\": false,\n    \"key_4\": 7050\n  }\n}",
-              "cookie": [],
-              "_postman_previewlanguage": "json"
-            }
-          ],
-          "event": [],
-          "protocolProfileBehavior": {
-            "disableBodyPruning": true
-          }
+          "id": "b36bc0dd-21a5-44de-913d-6c0ca10ded70",
+          "createdAt": "2026-10-22T01:36:50.000Z",
+          "updatedAt": "2026-10-22T01:36:50.000Z",
+          "uid": "35240-b36bc0dd-21a5-44de-913d-6c0ca10ded70"
         }
       ],
-      "event": []
-    }
-  ],
-  "event": [],
-  "variable": [
-    {
-      "type": "string",
-      "value": "http://localhost:9080",
-      "key": "baseUrl"
+      "id": "66dcac3d-6abb-4752-b507-5ccce00e71ab",
+      "createdAt": "2026-10-22T01:36:50.000Z",
+      "updatedAt": "2026-10-22T01:36:50.000Z",
+      "uid": "35240-66dcac3d-6abb-4752-b507-5ccce00e71ab"
     }
   ],
   "auth": {
@@ -1287,25 +1217,25 @@
     "apikey": [
       {
         "key": "key",
-        "value": "X-API-Key"
+        "value": "X-API-Key",
+        "type": "string"
       },
       {
         "key": "value",
-        "value": "{{apiKey}}"
+        "value": "{{apiKey}}",
+        "type": "string"
       },
       {
         "key": "in",
-        "value": "header"
+        "value": "header",
+        "type": "string"
       }
     ]
   },
-  "info": {
-    "_postman_id": "0588c8a0-2ebc-4fec-aab7-57212ba94a0a",
-    "name": "Unito Embed Reports Workspaces API",
-    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-    "description": {
-      "content": "<h2>Welcome to Unito Embed API documentation</h2> <p>In order to be able to use that api, Unito must first create an embed entity for you and give you its api key. <br>Once you have access to an embed, there are 2 main resources for  you to interact with </p> <p> <b>Workspaces - </b> Allow you to give us information about the entity (workspaces, organization, group, ... ) that the user accessing the embed belongs to. <br> Its unique identifier <i>externalWorkspaceId</i> is the value that you pass in the iframe URL. <br> The information provided regarding the status of that entity will allow us to keep up to date the status of the Unito's workspace subscription. </p>\n<p> <b>Reports - </b> You can select froma list of pre-made reports that our data team has been building in order to help you better understand how your users benefit from Unito, how many flows did they create, with which other tools did they connect and how big is their usage (changes synced, items in sync, ... ) </p>",
-      "type": "text/plain"
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:9080"
     }
-  }
+  ]
 }
